@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primarios - Zhaia Pinturas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+        }
+
+        .logo {
+            width: 500px; /* Aumentar tamaño del logo */
+            height: auto;
+        }
+
+        .back-btn {
+            font-size: 16px;
+            color: #333;
+            text-decoration: none;
+            padding: 10px 15px;
+            border: 1px solid #333;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+        }
+
+        .back-btn:hover {
+            background-color: #ddd;
+        }
+
+        /* Product Header */
+        .product-header {
+            padding: 30px 0;
+        }
+        
+        h1 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        /* Product Section */
+        .product-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .product-gallery {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .main-image {
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+        
+        .main-image img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .thumbnails {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .thumbnail {
+            border: 1px solid #e0e0e0;
+            width: 80px;
+            height: 80px;
+            padding: 5px;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+        
+        .thumbnail:hover {
+            border-color: #333;
+        }
+        
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .product-banner {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .product-banner img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .product-banner-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .product-description {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .product-description strong {
+            color: #333;
+        }
+        
+        .categories {
+            margin-bottom: 20px;
+        }
+        
+        .categories span {
+            color: #666;
+        }
+        
+        .categories a {
+            color: #777;
+            text-decoration: none;
+        }
+        
+        .categories a:hover {
+            text-decoration: underline;
+        }
+
+        /* Modal for image preview */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal img {
+            max-width: 80%;
+            height: auto;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+        
+        /* Specs Table */
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background-color: #ff0000;
+        }
+        
+        .specs-table th, .specs-table td {
+            border: none;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .specs-table th {
+            background-color: #ff0000;
+            color: white;
+        }
+        
+        /* Colors Section */
+        .colors-section {
+            margin: 40px 0;
+        }
+        
+        .colors-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .colors-title {
+            color: #9a1915;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .line-code {
+            font-weight: bold;
+        }
+        
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .color-item {
+            text-align: center;
+        }
+        
+        .color-swatches {
+            display: flex;
+            height: 40px;
+            margin-bottom: 8px;
+        }
+        
+        .color-swatch {
+            flex: 1;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .color-name {
+            font-size: 12px;
+            color: #777;
+        }
+        
+        @media (max-width: 768px) {
+            .product-section {
+                flex-direction: column;
+            }
+            
+            .color-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html" class="back-btn">Volver al inicio</a>
+            <img src="img/logo.jpg" alt="Logo de la tienda" class="logo">
+        </div>
+        
+        <div class="product-header">
+            <h1>Primarios</h1>
+            <div>
+                <button onclick="changeProduct('universal')">Primario Universal</button>
+                <button onclick="changeProduct('1k')">Primario 1K</button>
+                <button onclick="changeProduct('2k')">Primario 2K</button>
+                <button onclick="changeProduct('nitro')">Primer Nitrocelulosa</button>
+            </div>
+        </div>
+        
+        <div class="product-section">
+            <div class="product-gallery">
+                <!-- Imagen principal -->
+                <div class="main-image" onclick="openModal('img/fondonegro.webp')">
+                    <img id="mainImage" src="img/fondonegro.webp" alt="Primario Fondo Universal">
+                </div>
+
+                <!-- Miniaturas -->
+                <div class="thumbnails" id="thumbnails">
+                    <div class="thumbnail" onclick="changeImage('img/fondonegro.webp')">
+                        <img src="img/fondonegro.webp" alt="Imagen 1">
+                    </div>
+                    <div class="thumbnail" onclick="changeImage('img/fondo7.webp')">
+                        <img src="img/fondo7.webp" alt="Imagen 2">
+                    </div>
+                    <div class="thumbnail" onclick="changeImage('img/fondoblanco.webp')">
+                        <img src="img/fondoblanco.webp" alt="Imagen 3">
+                    </div>
+                    <div class="thumbnail" onclick="changeImage('img/fondo4.webp')">
+                        <img src="img/fondo4.webp" alt="Imagen 4">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-info">
+                <div class="product-banner" id="productBanner">
+                    <img src="img/infofondo.webp" alt="Primarios - Banner">
+                </div>
+                
+                <div class="product-description">
+                    <p id="productDescription"><strong>Zhaia Pinturas</strong> desarrollo el <strong>Primer Universal</strong> para usarse en el repintado automotriz con excelentes propiedades como son: secado rápido, fácil lijado, flexibilidad y sobre todo excelente adherencia a lámina desnuda preparada adecuadamente. Presenta buenas propiedades anticorrosivas.</p>
+                </div>
+                
+                <div class="categories">
+                    <span>Categorías: </span>
+                    <a href="#">Línea Automotriz</a>, <a href="#">Primarios</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="product-tabs">
+            <a>DESCRIPCIÓN</a>
+            
+            <div class="">
+                <table class="specs-table">
+                    <tr>
+                        <th>Catalización</th>
+                        <th>Catalizador</th>
+                        <th>% de Reducción</th>
+                        <th>Reductor Recomendado</th>
+                        <th>Número de Manos</th>
+                        <th>Oreo entre Mano y Mano</th>
+                    </tr>
+                    <tr>
+                        <td>No requiere</td>
+                        <td>No requiere</td>
+                        <td>100 al 150%</td>
+                        <td>Thinner Acrílico</td>
+                        <td>2 a 3 Manos</td>
+                        <td>10 a 15 Minutos</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal" id="imageModal" onclick="closeModal()">
+        <img id="modalImage" src="" alt="Imagen a gran escala">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+    </div>
+
+    <script>
+        // Datos de los productos
+        const products = {
+            universal: {
+                images: ['img/fondonegro.webp', 'img/fondo7.webp', 'img/fondoblanco.webp', 'img/fondo4.webp'],
+                banner: 'img/infofondo.webp',
+                description: '<strong>Zhaia Pinturas</strong> desarrollo el <strong>Primer Universal</strong> para usarse en el repintado automotriz con excelentes propiedades como son: secado rápido, fácil lijado, flexibilidad y sobre todo excelente adherencia a lámina desnuda preparada adecuadamente. Presenta buenas propiedades anticorrosivas.'
+            },
+            '1k': {
+                images: ['img/primer1k.webp'],
+                banner: 'img/infof1k.webp',
+                description: '<strong>Zhaia Pinturas</strong> ha desarrollado el <strong>Primer de Relleno 1K</strong>, de un solo componente con gran contenido de sólidos que proporciona alta capacidad de relleno, excelente adherencia, es de secado rápido, fácil lijado, buena tersura y nivelación, tiene excelente resistencia a la intemperie y a la corrosión. Se recomienda su uso en trabajos de repintado total o en reparaciones parciales (resanes) proporcionando un producto de alto desempeño.'
+            },
+            '2k': {
+                images: ['img/Primer2k.webp', 'img/cata2k.webp', 'img/kit2k.webp'],
+                banner: 'img/infoF2K.webp',
+                description: '<strong>Zhaia Pinturas</strong> ha desarrollado el <strong>Primer de Relleno 2K (DOS COMPONENTES)</strong>, de gran contenido de sólidos que proporciona alta capacidad de relleno, excelente adherencia, fácil lijado, buena tersura y nivelación, por ser un primer catalizado proporciona excelente resistencia química y mecánica. Se recomienda su uso en trabajos de repintado total o en reparaciones parciales (resanes) proporcionando un producto de alto desempeño.'
+            },
+            nitro: {
+                images: ['img/Primernitro.webp', 'img/cubetanitro.webp'],
+                banner: null, // No hay imagen de banner para Nitrocelulosa
+                description: '<strong>El Primer Automotivo</strong> de <strong>Zhaia Pinturas</strong>, es un Primer de Piroxilina (Nitrocelulosa) indispensable para realizar trabajos de repintado automotriz con excelentes propiedades como son: secado rápido, fácil lijado, excelente adherencia a superficies metálicas preparadas adecuadamente, mejora la tersura de los acabados y protege contra la corrosión. El Primer Automotivo tiene un alto contenido de sólidos, es fácil de aplicar, es suave al lijar en seco o con agua y tiene buen poder cubriente. También se puede aplicar sobre madera.'
+            }
+        };
+
+        // Función para cambiar el producto
+        function changeProduct(productKey) {
+            const product = products[productKey];
+            if (product) {
+                // Cambiar la imagen principal
+                document.getElementById('mainImage').src = product.images[0];
+                // Cambiar las miniaturas
+                const thumbnailsContainer = document.getElementById('thumbnails');
+                thumbnailsContainer.innerHTML = ''; // Limpiar miniaturas anteriores
+                product.images.forEach((imageSrc, index) => {
+                    const thumbnail = document.createElement('div');
+                    thumbnail.className = 'thumbnail';
+                    thumbnail.onclick = () => changeImage(imageSrc);
+                    thumbnail.innerHTML = `<img src="${imageSrc}" alt="Imagen ${index + 1}">`;
+                    thumbnailsContainer.appendChild(thumbnail);
+                });
+                // Cambiar el banner
+                const bannerContainer = document.getElementById('productBanner');
+                if (product.banner) {
+                    bannerContainer.innerHTML = `<img src="${product.banner}" alt="Banner">`;
+                } else {
+                    bannerContainer.innerHTML = `<div class="product-banner-text">Primer Automotivo de Nitrocelulosa</div>`;
+                }
+                // Cambiar la descripción
+                document.getElementById('productDescription').innerHTML = product.description;
+            }
+        }
+
+        // Función para cambiar la imagen principal
+        function changeImage(imageSrc) {
+            document.getElementById('mainImage').src = imageSrc;
+        }
+
+        // Función para abrir la imagen en tamaño grande
+        function openModal(imageSrc) {
+            document.getElementById('modalImage').src = imageSrc;
+            document.getElementById('imageModal').style.display = 'flex';
+        }
+        
+        // Función para cerrar el modal
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

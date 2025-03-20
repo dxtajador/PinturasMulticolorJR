@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - PinturasMulticolorJR</title>
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+        }
+
+        .logo {
+            width: 500px;
+            height: auto;
+        }
+
+        .back-btn {
+            font-size: 16px;
+            color: #333;
+            text-decoration: none;
+            padding: 10px 15px;
+            border: 1px solid #333;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+        }
+
+        .back-btn:hover {
+            background-color: #ddd;
+        }
+
+        /* Título de la sección */
+        .section-title {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Buscador de productos */
+        .search-section {
+            margin: 40px 0;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        /* Lista de productos */
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .product-item {
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #f9f9f9;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-item-content {
+            padding: 20px;
+        }
+
+        .product-item h3 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .product-item p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal img {
+            max-width: 80%;
+            height: auto;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html" class="back-btn">Volver al inicio</a>
+            <img src="img/logo.jpg" alt="Logo de la tienda" class="logo">
+        </div>
+        
+        <!-- Título de la sección -->
+        <h1 class="section-title">Productos</h1>
+
+        <!-- Apartado de productos con buscador -->
+        <div class="search-section">
+            <input type="text" id="searchBox" class="search-box" placeholder="Buscar productos..." oninput="filterProducts()">
+            
+            <div class="product-list" id="productList">
+                <!-- Producto 1 -->
+                <div class="product-item">
+                    <img src="img/imdP/Plaste.webp" alt="Producto 1" onclick="openModal('img/imdP/Plaste.webp')">
+                    <div class="product-item-content">
+                        <h3>Plaste Automotivo</h3>
+                        <p>El Plaste de Zhaia Pinturas es un material de Piroxilina (Nitrocelulosa) de secado al aire y excelente calidad para usarse en el repintado automotriz, está diseñado especialmente para rellenar imperfecciones o irregularidades no mayores a 1 o 1.5 milímetros.</p>
+                    </div>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="product-item">
+                    <img src="img/imdP/ResanadorAmarillo.webp" alt="Producto 2" onclick="openModal('img/imdP/ResanadorAmarillo.webp')">
+                    <div class="product-item-content">
+                        <h3>Resanador Automotivo Zhaia</h3>
+                        <p>El Resanador Automotivo de Zhaia Pinturas está elaborado a base de resinas poliéster de alta calidad y excelente desempeño. Es un producto diseñado para corregir y/o moldear aquellas partes metálicas golpeadas o con imperfecciones que requieren ser resanadas.</p>
+                    </div>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="product-item">
+                    <img src="img/imdP/ResanadorBlanco.webp" alt="Producto 3" onclick="openModal('img/imdP/ResanadorBlanco.webp')">
+                    <div class="product-item-content">
+                        <h3>Resanador Automotivo Zhaia</h3>
+                        <p>El Resanador Automotivo de Zhaia Pinturas está elaborado a base de resinas poliéster de alta calidad y excelente desempeño. Es un producto diseñado para corregir y/o moldear aquellas partes metálicas golpeadas o con imperfecciones que requieren ser resanadas.</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="img/imdP/Dralion.webp" alt="Producto 3" onclick="openModal('img/imdP/Dralion.webp')">
+                    <div class="product-item-content">
+                        <h3>Dralion</h3>
+                        <p>Zhaia Pinturas creo este Esmalte Industrial DRALION a base de resinas de la más alta calidad que existe en el mercado y que cubre fácilmente las características como efectividad ante la corrosión dejando una película tersa y dura, con una inigualable adherencia sobre lamina desnuda.</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="img/imdP/PrimerDA.webp" alt="Producto 3" onclick="openModal('img/imdP/PrimerDA.webp')">
+                    <div class="product-item-content">
+                        <h3>Primer Industrial de secado rápido</h3>
+                        <p>DA-007 Primer Industrial es un primer de tipo alquidalico modificado que fue desarrollado por Zhaia Pinturas para su aplicación en áreas donde se requiera protección contra la corrosión como: Herrería en general, tanques, tuberías, escaleras y todo tipo de superficies metálicas o de madera. </p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="img/imdP/Barniz.webp" alt="Producto 3" onclick="openModal('img/imdP/Barniz.webp')">
+                    <div class="product-item-content">
+                        <h3>Barniz Entintado</h3>
+                        <p>Zhaia Pinturas desarrollo el Barniz Entintado que es una barniz de secado rápido con el cual puede dejar un acabado y entonado de la madera en un solo paso. Contiene una combinación de resinas de excelente resistencia y colorantes proporcionando protección y belleza a la madera. </p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="img/imdP/Sellador.webp" alt="Producto 3" onclick="openModal('img/imdP/Sellador.webp')">
+                    <div class="product-item-content">
+                        <h3>Sellador Vinílico</h3>
+                        <p>El Sellador Vinilico de Zhaia Pinturas esta formulado con resinas de tipo vinil-acrílico que le confieren una excelente adhesión, resistencia a la humedad y gran poder de sellado. </p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="img/imdP/Acelerador.webp" alt="Producto 3" onclick="openModal('img/imdP/Acelerador.webp')">
+                    <div class="product-item-content">
+                        <h3>Acelerador para Poliuretano</h3>
+                        <p>Este producto es un catalizador de alta calidad diseñado para acelerar el proceso de curado en aplicaciones de poliuretano, especialmente en la línea automotriz. Ideal para profesionales que buscan optimizar tiempos de secado y mejorar la eficiencia en trabajos de reparación y acabados. Su fórmula avanzada garantiza un rendimiento consistente y duradero.</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="img/imdP/sigloP.jpg" alt="Producto 3" onclick="openModal('img/imdP/sigloP.jpg')">
+                    <div class="product-item-content">
+                        <h3>Pulimento Siglo</h3>
+                        <p>Pulimento de alta calidad diseñado para restaurar y proteger superficies, ofreciendo un acabado brillante y duradero. Ideal para uso en vehículos y otras superficies que requieren un pulido profesional. Su fórmula especial asegura resultados óptimos con un fácil aplicación.</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="img/imdP/105P.webp" alt="Producto 3" onclick="openModal('img/imdP/105P.webp')">
+                    <div class="product-item-content">
+                        <h3>Meguiar´s Pulimento Ultra Profesional M10501</h3>
+                        <p>Este pulimento de corte ultra profesional está diseñado para eliminar eficazmente imperfecciones profundas, rayaduras y marcas de lijado en superficies de pintura. Su fórmula avanzada ofrece un acabado suave y listo para encerar, ideal para uso en talleres profesionales y entusiastas del detallado automotriz. Proporciona resultados rápidos y consistentes, mejorando el brillo y la claridad de la pintura.</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="img/imdP/100P.webp" alt="Producto 3" onclick="openModal('img/imdP/100P.webp')">
+                    <div class="product-item-content">
+                        <h3>Meguiars Pulimento Profesional M10001.</h3>
+                        <p>Remueve rayas profundas, lluvias ácidas, marcas remolinos y hologramas moderados.
+                            Uno de los pulidores más avanzados de lMeguiars. El favorito de muchos profesionales alrededor del mundo, excelente balance calidad precio. Corte alto y rapidísimo, perfecto para marcas de lija 1200-2000. Deja muy buen brillo en un solo paso, pero se recomienda usar un abrillantador como paso 2 para mejorar acabado (M205 idealmente).</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="img/imdP/85P.webp" alt="Producto 3" onclick="openModal('img/imdP/85P.webp')">
+                    <div class="product-item-content">
+                        <h3>Pulimento Corte Grueso Diamante Grado 10 M8501. Meguiars1</h3>
+                        <p>Pulimento grueso de grado 10, compuesto para pinturas de pocos solventes y corte rápido, no deja marcas circulares, con una fórmula que crea poco polvo y salpicaduras, lo que facilita l limpieza siendo ideal y probado exitosamente durante años en talleres de pintura.</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="img/imdP/66P.jpg" alt="Producto 3" onclick="openModal('img/imdP/66P.jpg')">
+                    <div class="product-item-content">
+                        <h3>Meguiar's M66 Esmalte con acabado reflejante, para detalles rápidos.</h3>
+                        <p>Meguiar's Mirror Glaze Quick Detailer es un limpiador de cera de un paso que te proporciona una excelente limpieza de pintura, brillo y protección de la cera. Elimina de forma rápida y segura la oxidación y las imperfecciones mientras restaura un brillo profundo y deja un acabado duradero de cera de carnauba.</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="img/imdP/26P.jpg" alt="Producto 3" onclick="openModal('img/imdP/26P.jpg')">
+                    <div class="product-item-content">
+                        <h3>Meguiar's, Cera Amarilla Profesional de Alta Tecnología, M2601.</h3>
+                        <p>Esta cera de alta tecnología está diseñada para ofrecer una protección duradera y un brillo intenso a la pintura de tu vehículo. Su fórmula avanzada combina ingredientes de calidad profesional que repelen el agua y protegen contra los elementos ambientales. Ideal para uso en talleres y por entusiastas del detallado automotriz, proporciona un acabado suave y profundo con una aplicación sencilla.</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="img/imdP/64P.webp" alt="Producto 3" onclick="openModal('img/imdP/64P.webp')">
+                    <div class="product-item-content">
+                        <h3>Pulimento Sonax.</h3>
+                        <p>El Sonax Profiline CutMax es un compuesto de alto rendimiento diseñado para eliminar defectos severos en la pintura automotriz, como rayones profundos, marcas de lijado de hasta 1,200 granos y oxidación intensa. Este pulimento combina un poder de corte extremo con una fórmula de baja generación de polvo, lo que facilita su aplicación y remoción mientras deja la superficie lista para el acabado final.</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="img/imdP/36P.webp" alt="Producto 3" onclick="openModal('img/imdP/36P.webp')">
+                    <div class="product-item-content">
+                        <h3>Sonax Profiline Pulimiento.</h3>
+                        <p>Este pulimento de alta calidad está diseñado para corregir defectos en la pintura, como rayas leves, marcas de remolino y pérdida de brillo. Su fórmula avanzada ofrece un acabado suave y listo para encerar, ideal para uso profesional en talleres o por entusiastas del detallado automotriz. </p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="img/imdP/HG.webp" alt="Producto 3" onclick="openModal('img/imdP/HG.webp')">
+                    <div class="product-item-content">
+                        <h3>3m Imperial Abrillantador Manual.</h3>
+                        <p>Este abrillantador manual de 3M está diseñado para realzar el brillo y la profundidad de la pintura de tu vehículo. Su fórmula única elimina eficazmente las marcas leves y las imperfecciones superficiales, dejando un acabado suave y listo para encerar. Ideal para uso manual, es perfecto para entusiastas del detallado automotriz que buscan resultados profesionales. </p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="img/imdP/removedor.webp" alt="Producto 3" onclick="openModal('img/imdP/removedor.webp')">
+                    <div class="product-item-content">
+                        <h3>Removedor De Pintura Automotriz Zhaia.</h3>
+                        <p>Zhaia Pinturas ha desarrollado el removedor automotivo el cual es un excelente material que se usa para remover cualquier tipo de pintura en superficies metálicas, de madera, vidrio, etc. </p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="img/imdP/roberlo1.jpg" alt="Producto 3" onclick="openModal('img/imdP/roberlo1.jpg')">
+                    <div class="product-item-content">
+                        <h3>Resanador Roberlo Maxifill.</h3>
+                        <p>Este resanador de alta calidad está diseñado para corregir imperfecciones y preparar superficies antes de la aplicación de pintura. Su fórmula avanzada permite un fácil lijado y un acabado suave, ideal para reparaciones automotrices y trabajos de restauración. </p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="img/imdP/roberlo2.jpeg" alt="Producto 3" onclick="openModal('img/imdP/roberlo2.jpeg')">
+                    <div class="product-item-content">
+                        <h3>Resanador Roberlo SILVERLIGHT.</h3>
+                        <p>Este resanador de alta calidad está diseñado para ofrecer un acabado suave y fácil de lijar, ideal para la corrección de imperfecciones en superficies antes de la aplicación de pintura. Su fórmula avanzada proporciona una excelente adherencia y un secado rápido, lo que lo hace perfecto para reparaciones automotrices y trabajos de restauración. </p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="img/imdP/roberlo3.jpeg" alt="Producto 3" onclick="openModal('img/imdP/roberlo3.jpeg')">
+                    <div class="product-item-content">
+                        <h3>Resanador Roberlo MAXILIGHT.</h3>
+                        <p>Este resanador de alta calidad está formulado para ofrecer un acabado ligero y fácil de lijar, ideal para la corrección de imperfecciones menores y la preparación de superficies antes de la aplicación de pintura. Su fórmula avanzada asegura una excelente adherencia y un secado rápido, lo que lo convierte en una opción perfecta para reparaciones automotrices y trabajos de restauración. </p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="img/imdP/primerU.webp" alt="Producto 3" onclick="openModal('img/imdP/primerU.webp')">
+                    <div class="product-item-content">
+                        <h3>Primer Universal Zhaia</h3>
+                        <p>Este primer universal de alta calidad está diseñado para proporcionar una excelente adherencia y preparación de superficies antes de la aplicación de pintura. Su fórmula versátil lo hace compatible con una amplia gama de materiales, incluyendo metal, plástico y fibra de vidrio. </p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="img/imdP/Primer1k.webp" alt="Producto 3" onclick="openModal('img/imdP/primer1k.webp')">
+                    <div class="product-item-content">
+                        <h3>Primer de Relleno 1K Zhaia</h3>
+                        <p>Este primer de relleno de un componente (1K) está diseñado para corregir imperfecciones menores y nivelar superficies antes de la aplicación de pintura. Su fórmula fácil de aplicar y lijar proporciona un acabado suave y uniforme, ideal para reparaciones automotrices y trabajos de restauración. </p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="img/imdP/Primer2k.webp" alt="Producto 3" onclick="openModal('img/imdP/primer2k.webp')">
+                    <div class="product-item-content">
+                        <h3>Primer de Relleno 2K Zhaia</h3>
+                        <p>Este primer de relleno de dos componentes (2K) está formulado para corregir imperfecciones y nivelar superficies de manera eficiente antes de la aplicación de pintura. Su fórmula robusta ofrece un acabado duradero y fácil de lijar, ideal para reparaciones automotrices y trabajos de restauración. Proporciona una excelente adherencia y resistencia, asegurando resultados profesionales y de alta calidad</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="img/imdP/CrystalG.webp" alt="Producto 3" onclick="openModal('img/imdP/CrystalG.webp')">
+                    <div class="product-item-content">
+                        <h3>Transparente Crystal Gloss Zhaia</h3>
+                        <p>Este transparente de alta calidad está diseñado para proporcionar un acabado brillante y duradero, realzando el color y la profundidad de la pintura. Su fórmula avanzada ofrece una excelente resistencia a los rayos UV y a las condiciones climáticas, protegiendo la superficie y manteniendo su aspecto como nuevo por más tiempo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="imageModal" onclick="closeModal()">
+        <img id="modalImage" src="" alt="Imagen a gran escala">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+    </div>
+
+    <script>
+        // Función para filtrar productos
+        function filterProducts() {
+            const searchBox = document.getElementById('searchBox');
+            const productList = document.getElementById('productList');
+            const filter = searchBox.value.toUpperCase();
+            const products = productList.getElementsByClassName('product-item');
+
+            for (let i = 0; i < products.length; i++) {
+                const product = products[i];
+                const name = product.getElementsByTagName('h3')[0].textContent.toUpperCase();
+                const description = product.getElementsByTagName('p')[0].textContent.toUpperCase();
+
+                if (name.includes(filter) || description.includes(filter)) {
+                    product.style.display = '';
+                } else {
+                    product.style.display = 'none';
+                }
+            }
+        }
+
+        // Función para abrir la imagen en tamaño grande
+        function openModal(imageSrc) {
+            document.getElementById('modalImage').src = imageSrc;
+            document.getElementById('imageModal').style.display = 'flex';
+        }
+        
+        // Función para cerrar el modal
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

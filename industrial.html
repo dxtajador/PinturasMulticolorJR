@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dralion - Zhaia Pinturas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+        }
+
+        .logo {
+            width: 500px; /* Aumentar tamaño del logo */
+            height: auto;
+        }
+
+        .back-btn {
+            font-size: 16px;
+            color: #333;
+            text-decoration: none;
+            padding: 10px 15px;
+            border: 1px solid #333;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+        }
+
+        .back-btn:hover {
+            background-color: #ddd;
+        }
+
+        /* Product Header */
+        .product-header {
+            padding: 30px 0;
+        }
+        
+        h1 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        /* Product Section */
+        .product-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .product-gallery {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .main-image {
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+        
+        .main-image img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .thumbnails {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .thumbnail {
+            border: 1px solid #e0e0e0;
+            width: 80px;
+            height: 80px;
+            padding: 5px;
+            cursor: pointer;
+        }
+        
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .product-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .product-banner {
+            margin-bottom: 20px;
+        }
+        
+        .product-banner img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .product-description {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .product-description strong {
+            color: #333;
+        }
+        
+        .categories {
+            margin-bottom: 20px;
+        }
+        
+        .categories span {
+            color: #666;
+        }
+        
+        .categories a {
+            color: #777;
+            text-decoration: none;
+        }
+        
+        .categories a:hover {
+            text-decoration: underline;
+        }
+
+        /* Modal for image preview */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal img {
+            max-width: 80%;
+            height: auto;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+        
+        /* Specs Table */
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background-color: #ff0000;
+        }
+        
+        .specs-table th, .specs-table td {
+            border: none;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .specs-table th {
+            background-color: #ff0000;
+            color: white;
+        }
+        
+        /* Colors Section */
+        .colors-section {
+            margin: 40px 0;
+        }
+        
+        .colors-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .colors-title {
+            color: #9a1915;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .line-code {
+            font-weight: bold;
+        }
+        
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .color-item {
+            text-align: center;
+        }
+        
+        .color-swatches {
+            display: flex;
+            height: 40px;
+            margin-bottom: 8px;
+        }
+        
+        .color-swatch {
+            flex: 1;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .color-name {
+            font-size: 12px;
+            color: #777;
+        }
+        
+        @media (max-width: 768px) {
+            .product-section {
+                flex-direction: column;
+            }
+            
+            .color-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html" class="back-btn">Volver al inicio</a>
+            <img src="img/logo.jpg" alt="Logo de la tienda" class="logo">
+        </div>
+        
+        <div class="product-header">
+            <h1>Dralion</h1>
+        </div>
+        
+        <div class="product-section">
+            <div class="product-gallery">
+                <div class="main-image" onclick="openModal('img/Dralion.webp')">
+                    <img src="img/Dralion.webp" alt="Dralion - Esmalte Alquidalico">
+                </div>
+            </div>
+            
+            <div class="product-info">
+                <div class="product-banner">
+                    <img src="img/infodralion.webp" alt="Dralion - Banner">
+                </div>
+                
+                <div class="product-description">
+                    <p>Zhaia Pinturas creó el <strong>Esmalte Industrial DRALION</strong>, un producto a base de resinas de la más alta calidad que existe en el mercado. Este esmalte cubre fácilmente las características necesarias como efectividad ante la corrosión, dejando una película tersa y dura, con una inigualable adherencia sobre lámina desnuda. Gracias a su secado rápido, acorta considerablemente el tiempo de pintado.</p>
+                    <p>Este <strong>Esmalte Industrial DRALION</strong> puede utilizarse sobre todo en carrocerías, estructuras, tuberías, maquinaria y gran variedad de superficies metálicas que estén expuestas a la intemperie.</p>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+        
+        <div class="product-tabs">
+            <a>DESCRIPCIÓN</a>
+            
+            <div class="">
+                <table class="specs-table">
+                    <tr>
+                        <th>Catalización</th>
+                        <th>Catalizador</th>
+                        <th>% de Reducción</th>
+                        <th>Reductor Recomendado</th>
+                        <th>Número de Manos</th>
+                        <th>Oreo entre Mano y Mano</th>
+                    </tr>
+                    <tr>
+                        <td>No Requiere</td>
+                        <td>No Requiere</td>
+                        <td>75%</td>
+                        <td>Thinner Acrilico.</td>
+                        <td>-</td>
+                        <td>10 a 15 Minutos</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="colors-section">
+            <div class="colors-header">
+                <div class="colors-title">COLORES</div>
+                <div class="line-code">Línea ZI30</div>
+            </div>
+            
+            <div class="color-grid">
+                <!-- Colores Amarillo Limón Y06 -->
+                <div class="color-item">
+                    <div class="color-swatches">
+                        <img src="img/imgD/AmarilloLimonY06.webp" alt="Amarillo Limón Y06" class="color-swatch" onclick="openModal('img/imgD/AmarilloLimonY06.webp')">
+                    </div>
+                </div>
+                <!-- Colores Amarillo Cromo Y07 -->
+                <div class="color-item">
+                    <div class="color-swatches">
+                        <img src="img/imgD/AmarilloCromoY07.webp" alt="Amarillo Cromo Y07" class="color-swatch" onclick="openModal('img/imgD/AmarilloCromoY07.webp')">
+                    </div>
+                </div>
+                <!-- Colores Verde John Deere G71 -->
+                <div class="color-item">
+                    <div class="color-swatches">
+                        <img src="img/imgD/VerdeJohnDeereG71.webp" alt="Verde John Deere G71" class="color-swatch" onclick="openModal('img/imgD/VerdeJohnDeereG71.webp')">
+                    </div>
+                </div>
+                <!-- Colores Verde Orgánico G34 -->
+                <div class="color-item">
+                    <div class="color-swatches">
+                        <img src="img/imgD/VerdeOrganicoG34.webp" alt="Verde Orgánico G34" class="color-swatch" onclick="openModal('img/imgD/VerdeOrganicoG34.webp')">
+                    </div>
+                </div>
+                <!-- Colores Chocolate C62 -->
+                <div class="color-item">
+                    <div class="color-swatches">
+                        <img src="img/imgD/ChocolateC62.webp" alt="Chocolate C62" class="color-swatch" onclick="openModal('img/imgD/ChocolateC62.webp')">
+                    </div>
+                </div>
+                <!-- Colores Aluminio S64 -->
+                <div class="color-item">
+                    <div class="color-swatches">
+                        <img src="img/imgD/AluminioS64.webp" alt="Aluminio S64" class="color-swatch" onclick="openModal('img/imgD/AluminioS64.webp')">
+                    </div>
+                </div>
+                <!-- Colores Amarillo Caterpillar Y09 -->
+                <div class="color-item">
+                    <div class="color-swatches">
+                        <img src="img/imgD/AmarilloCaterpillarY09.webp" alt="Amarillo Caterpillar Y09" class="color-swatch" onclick="openModal('img/imgD/AmarilloCaterpillarY09.webp')">
+                    </div>
+                </div>
+                <!-- Colores Café Orgánico Tono Amarillento C38 -->
+                <div class="color-item">
+                    <div class="color-swatches">
+                        <img src="img/imgD/CafeOrganicoTonoAmarillentoC38.webp" alt="Café Orgánico Tono Amarillento C38" class="color-swatch" onclick="openModal('img/imgD/CafeOrganicoTonoAmarillentoC38.webp')">
+                    </div>
+                </div>
+                <!-- Colores Azul New Holland 461 -->
+                <div class="color-item">
+                    <div class="color-swatches">
+                        <img src="img/imgD/AzulNewHollandA61.webp" alt="Azul New Holland A61" class="color-swatch" onclick="openModal('img/imgD/AzulNewHollandA61.webp')">
+                    </div>
+                </div>
+                <!-- Colores Verde Esmeralda 669-1 -->
+                <div class="color-item">
+                    <div class="color-swatches">
+                        <img src="img/imgD/VerdeEsmeraldaG69-1.webp" alt="Verde Esmeralda G69-1" class="color-swatch" onclick="openModal('img/imgD/VerdeEsmeraldaG69-1.webp')">
+                    </div>
+                </div>
+                <!-- Colores Rojo Óxido R13 -->
+                <div class="color-item">
+                    <div class="color-swatches">
+                        <img src="img/imgD/RojoOxidoR13.webp" alt="Rojo Óxido R13" class="color-swatch" onclick="openModal('img/imgD/RojoOxidoR13.webp')">
+                    </div>
+                </div>
+                <!-- Colores Gris Maquinaria F63 -->
+                <div class="color-item">
+                    <div class="color-swatches">
+                        <img src="img/imgD/GrisMaquinariaF63.webp" alt="Gris Maquinaria F63" class="color-swatch" onclick="openModal('img/imgD/GrisMaquinariaF63.webp')">
+                    </div>
+                </div>
+                <!-- Colores Amarillo Óxido Y08 -->
+                <div class="color-item">
+                    <div class="color-swatches">
+                        <img src="img/imgD/AmarilloOxidoY08.webp" alt="Amarillo Óxido Y08" class="color-swatch" onclick="openModal('img/imgD/AmarilloOxidoY08.webp')">
+                    </div>
+                </div>
+                <!-- Colores Café Orgánico Tono Rojizo C37 -->
+                <div class="color-item">
+                    <div class="color-swatches">
+                        <img src="img/imgD/CafeOrganicoTonoRojizoC37.webp" alt="Café Orgánico Tono Rojizo C37" class="color-swatch" onclick="openModal('img/imgD/CafeOrganicoTonoRojizoC37.webp')">
+                    </div>
+                </div>
+                <!-- Colores Azul Orgánico A26 -->
+                <div class="color-item">
+                    <div class="color-swatches">
+                        <img src="img/imgD/AzulOrganicoA26.webp" alt="Azul Orgánico A26" class="color-swatch" onclick="openModal('img/imgD/AzulOrganicoA26.webp')">
+                    </div>
+                </div>
+                <!-- Colores Azul Prusia A27 -->
+                <div class="color-item">
+                    <div class="color-swatches">
+                        <img src="img/imgD/AzulPrusiaA27.webp" alt="Azul Prusia A27" class="color-swatch" onclick="openModal('img/imgD/AzulPrusiaA27.webp')">
+                    </div>
+                </div>
+                <!-- Colores Naranja N11 -->
+                <div class="color-item">
+                    <div class="color-swatches">
+                        <img src="img/imgD/NaranjaN11.webp" alt="Naranja N11" class="color-swatch" onclick="openModal('img/imgD/NaranjaN11.webp')">
+                    </div>
+                </div>
+                <!-- Colores Rojo Intenso R59-1 -->
+                <div class="color-item">
+                    <div class="color-swatches">
+                        <img src="img/imgD/RojoIntensoR59-1.webp" alt="Rojo Intenso R59-1" class="color-swatch" onclick="openModal('img/imgD/RojoIntensoR59-1.webp')">
+                    </div>
+                </div>
+                <!-- Colores Marrón M60 -->
+                <div class="color-item">
+                    <div class="color-swatches">
+                        <img src="img/imgD/MarronM60.webp" alt="Marrón M60" class="color-swatch" onclick="openModal('img/imgD/MarronM60.webp')">
+                    </div>
+                </div>
+                <!-- Colores Rojo Massey Ferguson R60 -->
+                <div class="color-item">
+                    <div class="color-swatches">
+                        <img src="img/imgD/RojoMasseyFergusonR60.webp" alt="Rojo Massey Ferguson R60" class="color-swatch" onclick="openModal('img/imgD/RojoMasseyFergusonR60.webp')">
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <!-- Nota sobre colores -->
+            <div class="color-note" style="margin-top: 20px; font-size: 12px; color: #666; text-align: center;">
+                NOTA: Estos colores son aproximados a los reales, pueden variar dependiendo de su pantalla (Los colores pueden ser igualados).
+
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal" id="imageModal" onclick="closeModal()">
+        <img id="modalImage" src="" alt="Imagen a gran escala">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+    </div>
+
+    <script>
+        // Función para abrir la imagen en tamaño grande
+        function openModal(imageSrc) {
+            document.getElementById('modalImage').src = imageSrc;
+            document.getElementById('imageModal').style.display = 'flex';
+        }
+        
+        // Función para cerrar el modal
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinilica - Zhaia Pinturas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+        }
+
+        .logo {
+            width: 500px; /* Aumentar tamaño del logo */
+            height: auto;
+        }
+
+        .back-btn {
+            font-size: 16px;
+            color: #333;
+            text-decoration: none;
+            padding: 10px 15px;
+            border: 1px solid #333;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+        }
+
+        .back-btn:hover {
+            background-color: #ddd;
+        }
+
+        /* Product Header */
+        .product-header {
+            padding: 30px 0;
+        }
+        
+        h1 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        /* Product Section */
+        .product-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .product-gallery {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .main-image {
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+        
+        .main-image img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .thumbnails {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .thumbnail {
+            border: 1px solid #e0e0e0;
+            width: 80px;
+            height: 80px;
+            padding: 5px;
+            cursor: pointer;
+        }
+        
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .product-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .product-banner {
+            margin-bottom: 20px;
+        }
+        
+        .product-banner img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .product-description {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .product-description strong {
+            color: #333;
+        }
+        
+        .categories {
+            margin-bottom: 20px;
+        }
+        
+        .categories span {
+            color: #666;
+        }
+        
+        .categories a {
+            color: #777;
+            text-decoration: none;
+        }
+        
+        .categories a:hover {
+            text-decoration: underline;
+        }
+
+        /* Modal for image preview */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal img {
+            max-width: 80%;
+            height: auto;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+        
+        /* Specs Table */
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background-color: #ff0000;
+        }
+        
+        .specs-table th, .specs-table td {
+            border: none;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .specs-table th {
+            background-color: #ff0000;
+            color: white;
+        }
+        
+        /* Colors Section */
+        .colors-section {
+            margin: 40px 0;
+        }
+        
+        .colors-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .colors-title {
+            color: #9a1915;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .line-code {
+            font-weight: bold;
+        }
+        
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .color-item {
+            text-align: center;
+        }
+        
+        .color-swatches {
+            display: flex;
+            height: 40px;
+            margin-bottom: 8px;
+        }
+        
+        .color-swatch {
+            flex: 1;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .color-name {
+            font-size: 12px;
+            color: #777;
+        }
+        
+        @media (max-width: 768px) {
+            .product-section {
+                flex-direction: column;
+            }
+            
+            .color-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+
+        /* Nuevos estilos para los botones de pintura */
+        .paint-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .paint-btn {
+            padding: 10px 20px;
+            background-color: #f4f4f4;
+            border: 1px solid #333;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .paint-btn.active {
+            background-color: #333;
+            color: white;
+        }
+
+        .paint-btn:hover {
+            background-color: #ddd;
+        }
+
+        .paint-content {
+            display: none;
+        }
+
+        .paint-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html" class="back-btn">Volver al inicio</a>
+            <img src="img/logo.jpg" alt="Logo de la tienda" class="logo">
+        </div>
+        
+        <div class="product-header">
+            <h1>Vinilica</h1>
+        </div>
+        
+        <div class="product-section">
+            <div class="product-gallery">
+                <!-- Botones para cambiar entre tipos de pintura -->
+                <div class="paint-buttons">
+                    <button class="paint-btn active" onclick="showPaint('nattural')">Nattural</button>
+                    <button class="paint-btn" onclick="showPaint('alegria')">Alegria</button>
+                    <button class="paint-btn" onclick="showPaint('ovo')">Ovo</button>
+                </div>
+
+                <!-- Contenido de Nattural -->
+                <div id="nattural" class="paint-content active">
+                    <div class="main-image" onclick="openModal('img/nattural.webp')">
+                        <img src="img/nattural.webp" alt="Nattural - Pintura Vinílica">
+                    </div>
+                    <div class="product-description">
+                        <p>Zhaia Pinturas ha desarrollado <strong>NATTURAL</strong> que es una pintura de tipo Vinil Acrílica reducible en agua, de acabado mate, durable y buen desempeño, se puede usar en interiores y exteriores para usos decorativos de casas, oficinas, talleres, etc. Y cualquier superficie con acabados de yeso, concreto, repellado, aplanado, mampostería, ladrillo, tabique y plafón.
+
+                            Por su gran desempeño <strong>NATTURAL</strong> es fácil de aplicar, cuenta una amplia gama de colores limpios, de buen poder cubriente, durable y secado rápido, además de ser 100% lavable.</p>
+                    </div>
+                </div>
+
+                <!-- Contenido de Alegria -->
+                <div id="alegria" class="paint-content">
+                    <div class="main-image" onclick="openModal('img/Alegria.webp')">
+                        <img src="img/Alegria.webp" alt="Alegria - Pintura Vinílica">
+                    </div>
+                    <div class="product-description">
+                        <p>Zhaia Pinturas a desarrollado <strong>ALEGRIA</strong> que es una pintura de tipo Vinil Acrílica reducible en agua, de acabado mate, durable y buen desempeño, se puede usar en interiores y exteriores para usos decorativos de casas, oficinas, talleres, etc. Y cualquier superficie con acabados de yeso, concreto, repellado, aplanado, mampostería, ladrillo, tabique y plafón.
+
+                            Por su gran desempeño <strong>ALEGRIA</strong> es fácil de aplicar, cuenta una amplia gama de colores limpios, de buen poder cubriente, durable y secado rápido, además de ser 100% lavable.</p>
+                    </div>
+                </div>
+
+                <!-- Contenido de Ovo -->
+                <div id="ovo" class="paint-content">
+                    <div class="main-image" onclick="openModal('img/ovo.webp')">
+                        <img src="img/ovo.webp" alt="Ovo - Pintura Vinílica">
+                    </div>
+                    <div class="product-description">
+                        <p>Zhaia Pinturas a desarrollado <strong>OVO</strong> que es una pintura de tipo Vinil Acrílica reducible en agua, de acabado satinado, durable y buen desempeño, se puede usar en interiores y exteriores para usos decorativos de casas, oficinas, talleres, etc. Y cualquier superficie con acabados de yeso, concreto, repellado, aplanado, mampostería, ladrillo, tabique y plafón.
+
+                            Por su gran desempeño <strong>OVO</strong> es fácil de aplicar, cuenta una amplia gama de colores limpios, de buen poder cubriente, durable y secado rápido, además de ser 100% lavable.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-info">
+                <!-- Banner que cambia según la pintura seleccionada -->
+                <div class="product-banner">
+                    <img id="paint-banner" src="img/infoN.webp" alt="Banner de Nattural">
+                </div>
+                
+                <div class="product-description">
+                    <p><strong>Zhaia Pinturas</strong>,creó la Pintura Vinílica, un producto a base de componentes acrílicos de la más alta calidad disponible en el mercado. Esta pintura combina características esenciales como resistencia a la humedad, fácil aplicación y un acabado uniforme, dejando una película elástica y duradera con adherencia excepcional sobre superficies lisas o porosas. Gracias a su fórmula de secado rápido, optimiza el tiempo de trabajo y permite una limpieza sencilla con agua.
+
+                        Además, su composición eco-amigable y baja emisión de olores la hace ideal para uso en interiores. La Pintura Vinílica Zhaia puede aplicarse en paredes, techos, maderas, yeso y otras superficies no metálicas, ofreciendo protección contra el desgaste y manteniendo su brillo y color incluso en condiciones de alta exposición a la intemperie.
+                        
+                        Perfecta para proyectos residenciales, comerciales o de restauración, garantiza un resultado profesional con cobertura máxima y larga duración.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de Especificaciones Técnicas -->
+        <div class="product-tabs">
+            <a>DESCRIPCIÓN</a>
+            <div class="">
+                <table class="specs-table">
+                    <tr>
+                        <th>Catalización</th>
+                        <th>Catalizador</th>
+                        <th>% de Reducción</th>
+                        <th>Reductor Recomendado</th>
+                        <th>Número de Manos</th>
+                        <th>Oreo entre Mano y Mano</th>
+                    </tr>
+                    <tr>
+                        <td>No requiere</td>
+                        <td>No requiere</td>
+                        <td>No requiere</td>
+                        <td>No requiere</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Sección de Colores -->
+        <div class="colors-section">
+            <div class="colors-header">
+                <div class="colors-title">COLORES</div>
+                <div class="line-code"></div>
+            </div>
+
+            <div class="color-grid" id="color-grid">
+                <!-- Los colores se cargarán dinámicamente aquí -->
+            </div>
+
+            <!-- Nota sobre colores -->
+            <div class="color-note" style="margin-top: 20px; font-size: 12px; color: #666; text-align: center;">
+                NOTA: Estos colores son aproximados a los reales, pueden variar dependiendo de su pantalla (Los colores pueden ser igualados).
+            </div>
+        </div>
+
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal" id="imageModal" onclick="closeModal()">
+        <img id="modalImage" src="" alt="Imagen a gran escala">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+    </div>
+
+    <script>
+        // Función para abrir la imagen en tamaño grande
+        function openModal(imageSrc) {
+            document.getElementById('modalImage').src = imageSrc;
+            document.getElementById('imageModal').style.display = 'flex';
+        }
+        
+        // Función para cerrar el modal
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // Datos de colores para cada pintura
+        const colorsData = {
+            nattural: [
+    { name: "Rosa Palido", image: "img/imgN/RosaPalido.webp" },
+    { name: "Amarillo Limon", image: "img/imgN/AmarilloLimon.webp" },
+    { name: "Verde Pistache", image: "img/imgN/VerdePistache.webp" },
+    { name: "Gris", image: "img/imgN/Gris.webp" },
+    { name: "Melon", image: "img/imgN/Melon.webp" },
+    { name: "Vainilla", image: "img/imgN/Vainilla.webp" },
+    { name: "Verde Claro", image: "img/imgN/VerdeClaro.webp" },
+    { name: "Azul Cielo", image: "img/imgN/AzulCielo.webp" },
+    { name: "Amarillo Napolitano", image: "img/imgN/AmarilloNapolitano.webp" },
+    { name: "Marfil", image: "img/imgN/Marfil.webp" },
+    { name: "Verde Turquesa", image: "img/imgN/VerdeTurquesa.webp" },
+    { name: "Azul Agua", image: "img/imgN/AzulAgua.webp" },
+    { name: "Amarillo Elegante", image: "img/imgN/AmarilloElegante.webp" },
+    { name: "Verde Hoja", image: "img/imgN/VerdeHoja.webp" },
+    { name: "Azul Medio", image: "img/imgN/AzulMedio.webp" },
+    { name: "Rojo", image: "img/imgN/Rojo.webp" },
+    { name: "Mango", image: "img/imgN/Mango.webp" },
+    { name: "Verdelimon", image: "img/imgN/Verdelimon.webp" },
+    { name: "Azul Mediterraneo", image: "img/imgN/AzulMediterraneo.webp" },
+    { name: "Blanco Ostion", image: "img/imgN/BlancoOstion.webp" },
+    { name: "Orquidea", image: "img/imgN/Orquidea.webp" },
+    { name: "Crema", image: "img/imgN/Crema.webp" },
+    { name: "Lila", image: "img/imgN/Lila.webp" }
+],
+alegria: [
+    { name: "Blanco Ostion", image: "img/imgA/BlancoOstion.webp" },
+    { name: "Amarillo Paja", image: "img/imgA/AmarilloPaja.webp" },
+    { name: "Verde Manzana", image: "img/imgA/VerdeManzana.webp" },
+    { name: "Beige", image: "img/imgA/Beige.webp" },
+    { name: "Amarillo Limon", image: "img/imgA/AmarilloLimon.webp" },
+    { name: "Menta", image: "img/imgA/Menta.webp" },
+    { name: "Chabacano", image: "img/imgA/Chabacano.webp" },
+    { name: "Marfil", image: "img/imgA/Marfil.webp" },
+    { name: "Verde Aguamarina", image: "img/imgA/VerdeAguamarina.webp" },
+    { name: "Amarillo Napolitano", image: "img/imgA/AmarilloNapolitano.webp" },
+    { name: "Amarillo Oxido", image: "img/imgA/AmarilloOxido.webp" },
+    { name: "Verde Limon", image: "img/imgA/VerdeLimon.webp" },
+    { name: "Naranja", image: "img/imgA/Naranja.webp" },
+    { name: "Verde Turquesa", image: "img/imgA/VerdeTurquesa.webp" },
+    { name: "Verde Bosque", image: "img/imgA/VerdeBosque.webp" },
+    { name: "Azul Cielo", image: "img/imgA/AzulCielo.webp" },
+    { name: "Tangerina", image: "img/imgA/Tangerina.webp" },
+    { name: "Gris Perla", image: "img/imgA/GrisPerla.webp" },
+    { name: "Azul Agua", image: "img/imgA/AzulAgua.webp" },
+    { name: "Rojo Ladrillo", image: "img/imgA/RojoLadrillo.webp" },
+    { name: "Orquidea", image: "img/imgA/Orquidea.webp" },
+    { name: "Azul Ultramar", image: "img/imgA/AzulUltramar.webp" },
+    { name: "Rojo Oxido", image: "img/imgA/RojoOxido.webp" },
+    { name: "Lila", image: "img/imgA/Lila.webp" },
+    { name: "Azul Colonial", image: "img/imgA/AzulColonial.webp" },
+    { name: "Cafe Obscuro", image: "img/imgA/CafeObscuro.webp" },
+    { name: "Azul Basico", image: "img/imgA/AzulBasico.webp" },
+    { name: "Verde Basico", image: "img/imgA/VerdeBasico.webp" },
+    { name: "Violeta Basico", image: "img/imgA/VioletaBasico.webp" },
+    { name: "Amarillo Basico", image: "img/imgA/AmarilloBasico.webp" },
+    { name: "Rojo Basico", image: "img/imgA/RojoBasico.webp" },
+    { name: "Magenta", image: "img/imgA/Magenta.webp" }
+],
+
+ovo: [
+    { name: "Cocoa", image: "img/imgO/Cocoa.webp" },
+    { name: "Rojo-Texas", image: "img/imgO/Rojo-Texas.webp" },
+    { name: "Rojo Intenso", image: "img/imgO/RojoIntenso.webp" },
+    { name: "Naranja-Intenso", image: "img/imgO/Naranja-Intenso.webp" },
+    { name: "Tangerina", image: "img/imgO/Tangerina.webp" },
+    { name: "Rojo Hacienda", image: "img/imgO/Rojo_Hacienda.webp" },
+    { name: "Magenta", image: "img/imgO/Magenta.webp" },
+    { name: "Rosa Mexicano", image: "img/imgO/RosaMexicano.webp" },
+    { name: "Salmon", image: "img/imgO/Csalmon.webp" },
+    { name: "Amarillo-Napolitano", image: "img/imgO/Amarillo-Napolitano.webp" },
+    { name: "Amarillo Limon", image: "img/imgO/AmarilloLimon.webp" },
+    { name: "Crema", image: "img/imgO/Crema.webp" },
+    { name: "Marfil", image: "img/imgO/Marfil.webp" },
+    { name: "Champagne", image: "img/imgO/Champagne.webp" },
+    { name: "Blanco Hueso", image: "img/imgO/BlancoHueso.webp" },
+    { name: "Verde Bosque", image: "img/imgO/Verde_Bosque.webp" },
+    { name: "Turquesa", image: "img/imgO/Turquesa.webp" },
+    { name: "Manzana", image: "img/imgO/Manzana.webp" },
+    { name: "Azul Intenso", image: "img/imgO/Azul_Intenso.webp" },
+    { name: "Azul Ultramar", image: "img/imgO/AzulUltramar.webp" },
+    { name: "Azul-Agua", image: "img/imgO/Azul-Agua.webp" },
+    { name: "Morado", image: "img/imgO/Morado.webp" },
+    { name: "Azul Colonial", image: "img/imgO/AzulColonial.webp" },
+    { name: "Lila-Intenso", image: "img/imgO/Lila-Intenso.webp" },
+    { name: "Gris", image: "img/imgO/Gris.webp" },
+    { name: "Rojo Oxido", image: "img/imgO/RojoOxido.webp" },
+    { name: "Rojo", image: "img/imgO/Rojo.webp" },
+    { name: "Amarillo Oxido", image: "img/imgO/AmarilloOxido.webp" },
+    { name: "Amarillo", image: "img/imgO/Amarillo.webp" },
+    { name: "Verde", image: "img/imgO/Verde.webp" },
+    { name: "Azul", image: "img/imgO/Azul.webp" },
+    { name: "Violeta", image: "img/imgO/Violeta.webp" }
+]
+        };
+
+        // Función para mostrar los colores según la pintura seleccionada
+        function showColors(paintId) {
+            const colorGrid = document.getElementById('color-grid');
+            colorGrid.innerHTML = ''; // Limpiar el grid de colores
+
+            colorsData[paintId].forEach(color => {
+                const colorItem = document.createElement('div');
+                colorItem.className = 'color-item';
+
+                const colorSwatches = document.createElement('div');
+                colorSwatches.className = 'color-swatches';
+
+                const img = document.createElement('img');
+                img.src = color.image;
+                img.alt = color.name;
+                img.className = 'color-swatch';
+                img.onclick = () => openModal(color.image);
+
+                const colorName = document.createElement('div');
+                colorName.className = 'color-name';
+                colorName.textContent = color.name;
+
+                colorSwatches.appendChild(img);
+                colorItem.appendChild(colorSwatches);
+                colorItem.appendChild(colorName);
+                colorGrid.appendChild(colorItem);
+            });
+        }
+
+        // Función para mostrar el contenido de la pintura seleccionada
+        function showPaint(paintId) {
+            // Ocultar todos los contenidos de pintura
+            document.querySelectorAll('.paint-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Mostrar el contenido seleccionado
+            document.getElementById(paintId).classList.add('active');
+
+            // Actualizar el estado de los botones
+            document.querySelectorAll('.paint-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`.paint-btn[onclick="showPaint('${paintId}')"]`).classList.add('active');
+
+            // Cambiar el banner según la pintura seleccionada
+            const banner = document.getElementById('paint-banner');
+            if (paintId === 'nattural') {
+                banner.src = 'img/infoN.webp';
+                banner.alt = 'Banner de Nattural';
+            } else if (paintId === 'alegria') {
+                banner.src = 'img/infoA.webp';
+                banner.alt = 'Banner de Alegria';
+            } else if (paintId === 'ovo') {
+                banner.src = 'img/infoO.webp';
+                banner.alt = 'Banner de Ovo';
+            }
+
+            // Mostrar los colores correspondientes
+            showColors(paintId);
+        }
+
+        // Inicializar con la primera pintura
+        showPaint('nattural');
+    </script>
+</body>
+</html>
