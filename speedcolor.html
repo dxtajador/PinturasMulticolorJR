@@ -2,28 +2,41 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Speed Kolor - Zhaia Pinturas</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speed Kolor - Zhaia Pinturas</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
         }
-
+        
         body {
-            font-family: Arial, sans-serif;
             color: #333;
+            line-height: 1.6;
         }
-
-        header {
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        .header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 20px;
+            justify-content: space-between;
+            padding: 20px 0;
         }
 
-        .volver {
+        .logo {
+            width: 500px; /* Aumentar tamaño del logo */
+            height: auto;
+        }
+
+        .back-btn {
             font-size: 16px;
             color: #333;
             text-decoration: none;
@@ -33,155 +46,107 @@
             border-radius: 5px;
         }
 
-        .volver:hover {
+        .back-btn:hover {
             background-color: #ddd;
         }
 
-        .logo {
-            width: 500px;
-            height: auto;
+        /* Product Header */
+        .product-header {
+            padding: 30px 0;
         }
-
-        main {
-            max-width: 1200px;
-            margin: auto;
-            padding: 20px;
-        }
-
-        .titulo {
+        
+        h1 {
             font-size: 32px;
-            margin-bottom: 30px;
+            color: #333;
+            margin-bottom: 20px;
         }
-
-        .producto {
+        
+        /* Product Section */
+        .product-section {
             display: flex;
             flex-wrap: wrap;
             gap: 30px;
             margin-bottom: 40px;
         }
-
-        .imagen-principal {
+        
+        .product-gallery {
             flex: 1;
             min-width: 300px;
-            border: 1px solid #ccc;
+        }
+        
+        .main-image {
+            border: 1px solid #e0e0e0;
             padding: 20px;
             text-align: center;
+            margin-bottom: 15px;
             cursor: pointer;
         }
-
-        .imagen-principal img {
+        
+        .main-image img {
             max-width: 100%;
             height: auto;
         }
-
-        .info-producto {
+        
+        .thumbnails {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .thumbnail {
+            border: 1px solid #e0e0e0;
+            width: 80px;
+            height: 80px;
+            padding: 5px;
+            cursor: pointer;
+        }
+        
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .product-info {
             flex: 1;
             min-width: 300px;
         }
-
-        .banner-producto {
+        
+        .product-banner {
+            margin-bottom: 20px;
+        }
+        
+        .product-banner img {
             max-width: 100%;
             height: auto;
-            margin-bottom: 20px;
         }
-
-        .descripcion {
+        
+        .product-description {
+            margin-bottom: 20px;
             color: #666;
-            margin-bottom: 20px;
         }
-
-        .descripcion strong {
+        
+        .product-description strong {
             color: #333;
         }
-
-        .categorias {
+        
+        .categories {
+            margin-bottom: 20px;
+        }
+        
+        .categories span {
             color: #666;
         }
-
-        .categorias a {
+        
+        .categories a {
             color: #777;
             text-decoration: none;
         }
-
-        .categorias a:hover {
+        
+        .categories a:hover {
             text-decoration: underline;
         }
 
-        .tabla-descripcion {
-            margin-top: 40px;
-        }
-
-        .tabla-descripcion table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: #d4b054;
-        }
-
-        .tabla-descripcion th,
-        .tabla-descripcion td {
-            border: none;
-            padding: 15px;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        .tabla-descripcion th {
-            color: white;
-        }
-
-        .colores {
-            margin-top: 40px;
-        }
-
-        .encabezado-colores {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .encabezado-colores h2 {
-            font-size: 20px;
-            color: #9a1915;
-            font-weight: bold;
-        }
-
-        .linea {
-            font-weight: bold;
-        }
-
-        .grid-colores {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .color {
-            text-align: center;
-        }
-
-        .color img {
-            width: 100%;
-            height: auto;
-            max-height: 150px;
-            object-fit: contain;
-            cursor: pointer;
-            border: 1px solid #ccc;
-        }
-
-        .color p {
-            font-size: 12px;
-            color: #777;
-            margin-top: 5px;
-        }
-
-        .nota-colores {
-            font-size: 12px;
-            color: #666;
-            text-align: center;
-            margin-top: 20px;
-        }
-
+        /* Modal for image preview */
         .modal {
             display: none;
             position: fixed;
@@ -192,100 +157,180 @@
             background-color: rgba(0, 0, 0, 0.7);
             justify-content: center;
             align-items: center;
-            z-index: 9999;
         }
 
-        .modal-contenido {
+        .modal img {
             max-width: 80%;
             height: auto;
         }
 
-        .cerrar {
+        .modal-close {
             position: absolute;
             top: 20px;
-            right: 30px;
+            right: 20px;
             font-size: 30px;
             color: white;
             cursor: pointer;
         }
-
+        
+        /* Specs Table */
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background-color: #d4b054;
+        }
+        
+        .specs-table th, .specs-table td {
+            border: none;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .specs-table th {
+            background-color: #d4b054;
+            color: white;
+        }
+        
+        /* Colors Section */
+        .colors-section {
+            margin: 40px 0;
+        }
+        
+        .colors-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .colors-title {
+            color: #9a1915;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .line-code {
+            font-weight: bold;
+        }
+        
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .color-item {
+            text-align: center;
+        }
+        
+        .color-swatches {
+            display: flex;
+            height: 40px;
+            margin-bottom: 8px;
+        }
+        
+        .color-swatch {
+            flex: 1;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .color-name {
+            font-size: 12px;
+            color: #777;
+        }
+        
         @media (max-width: 768px) {
-            .producto {
+            .product-section {
                 flex-direction: column;
             }
-
-            .grid-colores {
+            
+            .color-grid {
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            }
-
-            .logo {
-                width: 300px;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <a href="index.html" class="volver">Volver al inicio</a>
-        <img src="img/logo.jpg" alt="Logo de la tienda" class="logo">
-    </header>
-
-    <main>
-        <h1 class="titulo">SPEED KOLOR</h1>
-
-        <section class="producto">
-            <div class="imagen-principal" onclick="abrirModal('img/Speed-Kolor.webp')">
-                <img src="img/Speed-Kolor.webp" alt="Speed Kolor">
-            </div>
-
-            <div class="info-producto">
-                <img src="img/infospeedkolor.webp" alt="Información Speed Kolor" class="banner-producto">
-                <p class="descripcion">
-                    El esmalte de <strong>SPEED KOLOR</strong> es un esmalte de poliuretano, que ha sido desarrollado para ser usado en el recubrimiento de superficies donde se necesita una adherencia y una resistencia excepcionales.<br><br>
-                    Speed-Kolor es usado por empresas que se dedican a la fabricación u operación de equipo y unidades, las cuales se encuentran en un ambiente de trabajo pesado.
-                </p>
-                <p class="categorias">
-                    Categorías:
-                    <a href="#">Línea Automotriz</a>,
-                    <a href="#">Repintado Automotriz</a>
-                </p>
-            </div>
-        </section>
-
-        <section class="tabla-descripcion">
-            <h2>DESCRIPCIÓN</h2>
-            <table>
-                <tr>
-                    <th>Catalización</th>
-                    <th>Catalizador</th>
-                    <th>% de Reducción</th>
-                    <th>Reductor Recomendado</th>
-                    <th>Número de Manos</th>
-                    <th>Tiempo entre Manos</th>
-                </tr>
-                <tr>
-                    <td>4 a 1</td>
-                    <td>Catalizador para Esmalte de Poliuretano</td>
-                    <td>80 a 100%</td>
-                    <td>Solvente para Esmalte Poliuretano</td>
-                    <td>2 a 3 Manos</td>
-                    <td>10 a 15 Minutos</td>
-                </tr>
-            </table>
-        </section>
-
-        <section class="colores">
-            <div class="encabezado-colores">
-                <h2>COLORES</h2>
-                <span class="linea">Línea ZPU90</span>
-            </div>
-
-            <div class="grid-colores">
-                <div class="color">
-                    <img src="img/imgSk/MarronRoyal.webp" alt="Marrón Royal" onclick="abrirModal('img/imgSk/MarronRoyal.webp')">
-                    <p>Marrón Royal</p>
+    <div class="container">
+        <div class="header">
+            <a href="index.html" class="back-btn">Volver al inicio</a>
+            <img src="img/logo.jpg" alt="Logo de la tienda" class="logo">
+        </div>
+        
+        <div class="product-header">
+            <h1>SPEED KOLOR</h1>
+        </div>
+        
+        <div class="product-section">
+            <div class="product-gallery">
+                <div class="main-image" onclick="openModal('img/Speed-Kolor.webp')">
+                    <img src="img/Speed-Kolor.webp" alt="Speed Kolor - Esmalte De Poliuretano">
                 </div>
-            <div class="color-item">
+            </div>
+            
+            <div class="product-info">
+                <div class="product-banner">
+                    <img src="img/infospeedkolor.webp" alt="Speed Kolor - Banner">
+                </div>
+                
+                <div class="product-description">
+                    <p>El esmalte de<strong>SPEED KOLOR,</strong>  es un esmalte de poliuretano, que ha sido desarrollado para ser usado en el recubrimiento de superficies donde se necesita una adherencia y una resistencia excepcionales.
+
+                        Speed-Kolor es usado por empresas que se dedican a la fabricación u operación de equipo y unidades, las cuales se encuentran en un ambiente de trabajo pesado.</p>
+                </div>
+                
+                <div class="categories">
+                    <span>Categorías: </span>
+                    <a href="#">Línea Automotriz</a>, <a href="#">Repintado Automotriz</a>
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="product-tabs">
+            <a>DESCRIPCIÓN</a>
+            
+            <div class="specs-table">
+                <table>
+                    <tr>
+                        <th>Catalización</th>
+                        <th>Catalizador</th>
+                        <th>% de Reducción</th>
+                        <th>Reductor Recomendado</th>
+                        <th>Número de Manos</th>
+                        <th>Oreo entre Mano y Mano</th>
+                    </tr>
+                    <tr>
+                        <td>4 a 1</td>
+                        <td>Catalizador para Esmalte de Poliuretano</td>
+                        <td>80 a 100%</td>
+                        <td>Solvente para Esmalte Poliuretano.</td>
+                        <td>2 a 3 Manos</td>
+                        <td>10 a 15 Minutos</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="colors-section">
+            <div class="colors-header">
+                <div class="colors-title">COLORES</div>
+                <div class="line-code">Línea ZPU90</div>
+            </div>
+            
+            <div class="color-grid">
+                <!-- Colores Marrón Violeta -->
+                <div class="color-item">
+                    <div class="color-swatches">
+                        <img src="img/imgSk/MarronRoyal.webp" alt="Marrón Royal" class="color-swatch" onclick="openModal('img/imgSk/MarronRoyal.webp')">
+                    </div>
+                    <div class="color-name">Marrón Royal</div>
+                </div>
+            
+<div class="color-item">
                     <div class="color-swatches">
                         <img src="img/imgSk/MarronVioleta.webp" alt="Magenta" class="color-swatch" onclick="openModal('img/imgSk/MarronVioleta.webp')">
                     </div>
@@ -477,26 +522,29 @@
     <div class="color-name">Aluminio Mediano Brillante</div>
 </div>
             </div>
-
-            <p class="nota-colores">
+            <!-- Nota sobre colores -->
+            <div class="color-note" style="margin-top: 20px; font-size: 12px; color: #666; text-align: center;">
                 NOTA: Estos colores son aproximados a los reales, pueden variar dependiendo de su pantalla (Los colores pueden ser igualados).
-            </p>
-        </section>
-    </main>
-
-    <div id="modal" class="modal" onclick="cerrarModal()">
-        <span class="cerrar">&times;</span>
-        <img class="modal-contenido" id="imgModal">
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal" id="imageModal" onclick="closeModal()">
+        <img id="modalImage" src="" alt="Imagen a gran escala">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
     </div>
 
     <script>
-        function abrirModal(src) {
-            document.getElementById("imgModal").src = src;
-            document.getElementById("modal").style.display = "flex";
+        // Función para abrir la imagen en tamaño grande
+        function openModal(imageSrc) {
+            document.getElementById('modalImage').src = imageSrc;
+            document.getElementById('imageModal').style.display = 'flex';
         }
-
-        function cerrarModal() {
-            document.getElementById("modal").style.display = "none";
+        
+        // Función para cerrar el modal
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
         }
     </script>
 </body>
