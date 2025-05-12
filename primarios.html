@@ -14,6 +14,7 @@
         
         body {
             color: #333;
+            background-color: #f4f4f4;
             line-height: 1.6;
         }
         
@@ -26,13 +27,15 @@
         /* Header */
         .header {
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
             padding: 20px 0;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .logo {
-            width: 500px; /* Aumentar tamaño del logo */
+            width: 300px;
             height: auto;
         }
 
@@ -40,46 +43,68 @@
             font-size: 16px;
             color: #333;
             text-decoration: none;
-            padding: 10px 15px;
-            border: 1px solid #333;
-            background-color: #f4f4f4;
+            padding: 10px 20px;
+            background-color: #e7e7e7;
             border-radius: 5px;
+            transition: background-color 0.3s;
         }
 
         .back-btn:hover {
-            background-color: #ddd;
+            background-color: #ccc;
         }
 
         /* Product Header */
         .product-header {
-            padding: 30px 0;
+            padding: 40px 0;
+            text-align: center;
+            background-color: #fff;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
         
         h1 {
             font-size: 32px;
             color: #333;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            font-weight: bold;
         }
         
+        .product-header button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #2a7bde;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 5px;
+            border-radius: 5px;
+        }
+
+        .product-header button:hover {
+            background-color: #1d5c9c;
+        }
+
         /* Product Section */
         .product-section {
             display: flex;
             flex-wrap: wrap;
-            gap: 30px;
+            gap: 20px;
             margin-bottom: 40px;
         }
         
         .product-gallery {
             flex: 1;
-            min-width: 300px;
+            min-width: 320px;
         }
         
         .main-image {
-            border: 1px solid #e0e0e0;
-            padding: 20px;
+            border: 2px solid #e0e0e0;
+            padding: 10px;
             text-align: center;
             margin-bottom: 15px;
             cursor: pointer;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         
         .main-image img {
@@ -90,6 +115,7 @@
         .thumbnails {
             display: flex;
             gap: 10px;
+            justify-content: center;
             margin-top: 15px;
         }
         
@@ -100,10 +126,12 @@
             padding: 5px;
             cursor: pointer;
             transition: border-color 0.3s ease;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         
         .thumbnail:hover {
-            border-color: #333;
+            border-color: #2a7bde;
         }
         
         .thumbnail img {
@@ -114,7 +142,7 @@
         
         .product-info {
             flex: 1;
-            min-width: 300px;
+            min-width: 320px;
         }
         
         .product-banner {
@@ -125,15 +153,7 @@
         .product-banner img {
             max-width: 100%;
             height: auto;
-        }
-        
-        .product-banner-text {
-            font-size: 24px;
-            font-weight: bold;
-            color: #333;
-            padding: 20px;
-            background-color: #f4f4f4;
-            border: 1px solid #e0e0e0;
+            border-radius: 10px;
         }
         
         .product-description {
@@ -143,23 +163,6 @@
         
         .product-description strong {
             color: #333;
-        }
-        
-        .categories {
-            margin-bottom: 20px;
-        }
-        
-        .categories span {
-            color: #666;
-        }
-        
-        .categories a {
-            color: #777;
-            text-decoration: none;
-        }
-        
-        .categories a:hover {
-            text-decoration: underline;
         }
 
         /* Modal for image preview */
@@ -173,6 +176,7 @@
             background-color: rgba(0, 0, 0, 0.7);
             justify-content: center;
             align-items: center;
+            z-index: 1000;
         }
 
         .modal img {
@@ -188,81 +192,85 @@
             color: white;
             cursor: pointer;
         }
-        
+
         /* Specs Table */
         .specs-table {
             width: 100%;
             border-collapse: collapse;
             margin: 30px 0;
-            background-color: #ff0000;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        
+
         .specs-table th, .specs-table td {
-            border: none;
             padding: 15px;
             text-align: center;
-            font-weight: bold;
+            border: 1px solid #e0e0e0;
         }
-        
+
         .specs-table th {
-            background-color: #ff0000;
+            background-color: #2a7bde;
             color: white;
         }
-        
+
+        .specs-table td {
+            background-color: #f9f9f9;
+        }
+
         /* Colors Section */
         .colors-section {
             margin: 40px 0;
         }
-        
+
         .colors-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
         }
-        
+
         .colors-title {
             color: #9a1915;
             font-size: 20px;
             font-weight: bold;
         }
-        
+
         .line-code {
             font-weight: bold;
         }
-        
+
         .color-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 20px;
         }
-        
+
         .color-item {
             text-align: center;
         }
-        
+
         .color-swatches {
             display: flex;
             height: 40px;
             margin-bottom: 8px;
         }
-        
+
         .color-swatch {
             flex: 1;
             height: 100%;
             cursor: pointer;
         }
-        
+
         .color-name {
             font-size: 12px;
             color: #777;
         }
-        
+
         @media (max-width: 768px) {
             .product-section {
                 flex-direction: column;
             }
-            
+
             .color-grid {
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             }
@@ -325,7 +333,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="product-tabs">
             <a>DESCRIPCIÓN</a>
             
@@ -351,7 +359,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Modal -->
     <div class="modal" id="imageModal" onclick="closeModal()">
         <img id="modalImage" src="" alt="Imagen a gran escala">
@@ -379,53 +387,44 @@
             nitro: {
                 images: ['img/Primernitro.webp', 'img/cubetanitro.webp'],
                 banner: null, // No hay imagen de banner para Nitrocelulosa
-                description: '<strong>El Primer Automotivo</strong> de <strong>Zhaia Pinturas</strong>, es un Primer de Piroxilina (Nitrocelulosa) indispensable para realizar trabajos de repintado automotriz con excelentes propiedades como son: secado rápido, fácil lijado, excelente adherencia a superficies metálicas preparadas adecuadamente, mejora la tersura de los acabados y protege contra la corrosión. El Primer Automotivo tiene un alto contenido de sólidos, es fácil de aplicar, es suave al lijar en seco o con agua y tiene buen poder cubriente. También se puede aplicar sobre madera.'
+                description: '<strong>El Primer Automotivo</strong> de <strong>Zhaia Pinturas</strong>, es un Primer de Piroxilina (Nitrocelulosa) indispensable para realizar trabajos de repintado automotriz con excelentes propiedades como son: secado rápido, fácil lijado, excelente adherencia a superficies metálicas preparadas adecuadamente, mejora la tersura de los acabados y protege contra la corrosión. El Primer Automotivo tiene un alto contenido de sólidos y mejora el rendimiento de la pintura.'
             }
         };
 
-        // Función para cambiar el producto
-        function changeProduct(productKey) {
-            const product = products[productKey];
-            if (product) {
-                // Cambiar la imagen principal
-                document.getElementById('mainImage').src = product.images[0];
-                // Cambiar las miniaturas
-                const thumbnailsContainer = document.getElementById('thumbnails');
-                thumbnailsContainer.innerHTML = ''; // Limpiar miniaturas anteriores
-                product.images.forEach((imageSrc, index) => {
-                    const thumbnail = document.createElement('div');
-                    thumbnail.className = 'thumbnail';
-                    thumbnail.onclick = () => changeImage(imageSrc);
-                    thumbnail.innerHTML = `<img src="${imageSrc}" alt="Imagen ${index + 1}">`;
-                    thumbnailsContainer.appendChild(thumbnail);
-                });
-                // Cambiar el banner
-                const bannerContainer = document.getElementById('productBanner');
-                if (product.banner) {
-                    bannerContainer.innerHTML = `<img src="${product.banner}" alt="Banner">`;
-                } else {
-                    bannerContainer.innerHTML = `<div class="product-banner-text">Primer Automotivo de Nitrocelulosa</div>`;
-                }
-                // Cambiar la descripción
-                document.getElementById('productDescription').innerHTML = product.description;
-            }
+        // Cambiar las imágenes y la descripción del producto según la selección
+        function changeProduct(product) {
+            const selectedProduct = products[product];
+            document.getElementById('mainImage').src = selectedProduct.images[0];
+            document.getElementById('productBanner').innerHTML = selectedProduct.banner ? `<img src="${selectedProduct.banner}" alt="Banner">` : '';
+            document.getElementById('productDescription').innerHTML = selectedProduct.description;
+
+            let thumbnailHTML = '';
+            selectedProduct.images.forEach(img => {
+                thumbnailHTML += `
+                    <div class="thumbnail" onclick="changeImage('${img}')">
+                        <img src="${img}" alt="Imagen">
+                    </div>
+                `;
+            });
+            document.getElementById('thumbnails').innerHTML = thumbnailHTML;
         }
 
-        // Función para cambiar la imagen principal
-        function changeImage(imageSrc) {
-            document.getElementById('mainImage').src = imageSrc;
+        function changeImage(image) {
+            document.getElementById('mainImage').src = image;
         }
 
-        // Función para abrir la imagen en tamaño grande
+        // Funciones del Modal
         function openModal(imageSrc) {
             document.getElementById('modalImage').src = imageSrc;
             document.getElementById('imageModal').style.display = 'flex';
         }
-        
-        // Función para cerrar el modal
+
         function closeModal() {
             document.getElementById('imageModal').style.display = 'none';
         }
+
+        // Inicialización por defecto
+        changeProduct('universal');
     </script>
 </body>
 </html>
