@@ -116,9 +116,12 @@
         }
         
         .product-banner img {
-            max-width: System.DataTableTypeName.MaxLength = 80;
-            height: 80;
-        }
+    max-width: 100%;
+    height: auto;
+    max-height: 300px; /* <-- Nueva línea */
+    object-fit: contain; /* Para que se escale correctamente */
+}
+
         
         .product-description {
             margin-bottom: 20px;
