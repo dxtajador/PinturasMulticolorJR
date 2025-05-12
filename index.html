@@ -1,275 +1,266 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pinturas Multicolor JR</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* Estilos generales */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pinturas Multicolor JR</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-        }
+  <!-- Estilos responsivos para móviles -->
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-        .hero-section {
-            position: relative;
-            height: 60vh;
-            overflow: hidden;
-        }
+    body, html {
+      margin: 0;
+      padding: 0;
+    }
 
-        #hero-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
+    video, img {
+      max-width: 100%;
+      height: auto;
+    }
 
-        .hero-overlay {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-        }
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      padding: 1rem;
+    }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            color: white;
-            text-align: center;
-            top: 50%;
-            transform: translateY(-50%);
-        }
+    .hero-section {
+      position: relative;
+      height: 50vh;
+      overflow: hidden;
+    }
 
-        /* Imágenes Zhaia y Baslac */
-        .image-banner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
+    #hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-        .image-banner img {
-            width: 45%;
-            max-width: 300px;
-            height: auto;
-            object-fit: contain;
-        }
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
 
-        @media screen and (max-width: 768px) {
-            .image-banner {
-                flex-direction: column;
-                align-items: center;
-            }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      color: white;
+      text-align: center;
+      padding-top: 10%;
+    }
 
-            .image-banner img {
-                width: 80%;
-                max-width: none;
-            }
-        }
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
 
-        .navigation-buttons {
-            padding: 2rem 1rem;
-        }
+    .footer-col {
+      flex: 1 1 100%;
+      padding: 10px;
+    }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+    .image-banner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+    }
 
-        .button-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
+    @media screen and (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 1.8rem;
+      }
 
-        .nav-button {
-            flex: 1 1 calc(50% - 1rem);
-            background: #eee;
-            padding: 1rem;
-            text-align: center;
-            text-decoration: none;
-            color: black;
-            border-radius: 8px;
-            transition: background 0.3s;
-        }
+      .hero-content p {
+        font-size: 1rem;
+      }
 
-        .nav-button:hover {
-            background: #ccc;
-        }
+      .navigation-buttons .container h2 {
+        font-size: 1.3rem;
+        text-align: center;
+      }
 
-        .why-us-section {
-            padding: 2rem 1rem;
-            background: #f4f4f4;
-        }
+      .nav-button {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+        flex-direction: column;
+        text-align: center;
+      }
 
-        .features-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
+      .nav-button i {
+        font-size: 1.5rem;
+        margin-bottom: 0.3rem;
+      }
 
-        .feature-card {
-            flex: 1 1 calc(33.33% - 1rem);
-            background: white;
-            padding: 1rem;
-            border-radius: 8px;
-            text-align: center;
-        }
+      .features-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
 
-        .main-footer {
-            background: #222;
-            color: white;
-            padding: 2rem 1rem;
-        }
+      .footer-col {
+        text-align: center;
+      }
 
-        .footer-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
+      .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
 
-        .footer-col {
-            flex: 1 1 300px;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            margin-top: 2rem;
-        }
-
-        .map-button {
-            display: inline-block;
-            margin-bottom: 1rem;
-            background: #fff;
-            color: #222;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        ul li a {
-            color: white;
-            text-decoration: none;
-        }
-    </style>
+      .image-banner {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Banner Principal con Video -->
-    <div class="hero-section">
-        <video autoplay muted loop id="hero-video">
-            <source src="video/background.mp4" type="video/mp4">
-        </video>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>Pinturas Multicolor JR</h1>
-            <p>La excelencia en cada color</p>
-        </div>
+  <!-- Banner Principal con Video -->
+  <div class="hero-section">
+    <video autoplay muted loop id="hero-video">
+      <source src="video/background.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Pinturas Multicolor JR</h1>
+      <p>La excelencia en cada color</p>
     </div>
+  </div>
 
-    <!-- Imagen Zhaia y Baslac lado a lado -->
-    <div class="image-banner">
-        <img src="https://www.zhaiapinturas.mx/wp-content/uploads/2016/11/Logo.png" alt="Logo Zhaia">
-        <img src="img/baslac.png" alt="Logo Baslac">
+  <!-- Banner con Imágenes a los lados -->
+  <div class="image-banner">
+    <img src="https://www.zhaiapinturas.mx/wp-content/uploads/2016/11/Logo.png" alt="Zhaia">
+    <img src="img/baslac.png" alt="Baslac">
+  </div>
+
+  <!-- Botones de Navegación -->
+  <div class="navigation-buttons">
+    <div class="container">
+      <h2>Pintura Automotriz</h2>
+      <div class="button-grid">
+        <a href="glosscolor.html" class="nav-button interiores-btn">
+          <i class="fas fa-car-crash"></i>
+          <span>Base Color</span>
+        </a>
+        <a href="fastcolor.html" class="nav-button exteriores-btn">
+          <i class="fas fa-car-side"></i>
+          <span>Esmalte Acrilico</span>
+        </a>
+        <a href="speedcolor.html" class="nav-button esmaltes-btn">
+          <i class="fas fa-truck-pickup"></i>
+          <span>Esmalte Poliuretano</span>
+        </a>
+        <a href="crystal.html" class="nav-button esmaltes-btn">
+          <i class="fa-solid fa-droplet"></i>
+          <span>Transparente</span>
+        </a>
+        <a href="baslac.html" class="nav-button impermeabilizantes-btn">
+          <i class="fas fa-car"></i>
+          <span>Baslac</span>
+        </a>
+      </div>
+
+      <h2>Categorías Especiales</h2>
+      <div class="button-grid">
+        <a href="industrial.html" class="nav-button industrial-btn special">
+          <i class="fas fa-industry"></i>
+          <span>Industrial</span>
+        </a>
+        <a href="primarios.html" class="nav-button primarios-btn special">
+          <i class="fas fa-car"></i>
+          <span>Fondos</span>
+        </a>
+        <a href="vinilica.html" class="nav-button vinilica-btn special">
+          <i class="fas fa-paint-roller"></i>
+          <span>Vinilica</span>
+        </a>
+        <a href="productos.html" class="nav-button accesorios-btn special">
+          <i class="fas fa-fill-drip"></i>
+          <span>Productos</span>
+        </a>
+        <a href="accesorios.html" class="nav-button accesorios-btn special">
+          <i class="fas fa-tools"></i>
+          <span>Accesorios y Herramientas</span>
+        </a>
+      </div>
     </div>
+  </div>
 
-    <!-- Botones de Navegación -->
-    <div class="navigation-buttons">
-        <div class="container">
-            <h2>Pintura Automotriz</h2>
-            <div class="button-grid">
-                <a href="glosscolor.html" class="nav-button interiores-btn"><i class="fas fa-car-crash"></i><br>Base Color</a>
-                <a href="fastcolor.html" class="nav-button exteriores-btn"><i class="fas fa-car-side"></i><br>Esmalte Acrílico</a>
-                <a href="speedcolor.html" class="nav-button esmaltes-btn"><i class="fas fa-truck-pickup"></i><br>Esmalte Poliuretano</a>
-                <a href="crystal.html" class="nav-button esmaltes-btn"><i class="fa-solid fa-droplet"></i><br>Transparente</a>
-                <a href="baslac.html" class="nav-button impermeabilizantes-btn"><i class="fas fa-car"></i><br>Baslac</a>
-            </div>
-
-            <h2>Categorías Especiales</h2>
-            <div class="button-grid">
-                <a href="industrial.html" class="nav-button industrial-btn"><i class="fas fa-industry"></i><br>Industrial</a>
-                <a href="primarios.html" class="nav-button primarios-btn"><i class="fas fa-car"></i><br>Fondos</a>
-                <a href="vinilica.html" class="nav-button vinilica-btn"><i class="fas fa-paint-roller"></i><br>Vinílica</a>
-                <a href="productos.html" class="nav-button accesorios-btn"><i class="fas fa-fill-drip"></i><br>Productos</a>
-                <a href="accesorios.html" class="nav-button accesorios-btn"><i class="fas fa-tools"></i><br>Accesorios y Herramientas</a>
-            </div>
+  <!-- Sección Por Qué Elegirnos -->
+  <section class="why-us-section">
+    <div class="container">
+      <h2>¿Por qué elegirnos?</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <i class="fas fa-star"></i>
+          <h3>Calidad Garantizada</h3>
+          <p>Trabajamos con las mejores marcas y productos del mercado.</p>
         </div>
+        <div class="feature-card">
+          <i class="fas fa-users"></i>
+          <h3>Asesoría Experta</h3>
+          <p>Nuestro equipo está capacitado para ayudarte.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-tag"></i>
+          <h3>Mejor Precio</h3>
+          <p>Precios competitivos sin comprometer la calidad.</p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <!-- Por qué elegirnos -->
-    <section class="why-us-section">
-        <div class="container">
-            <h2>¿Por qué elegirnos?</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <i class="fas fa-star"></i>
-                    <h3>Calidad Garantizada</h3>
-                    <p>Trabajamos con las mejores marcas y productos del mercado.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-users"></i>
-                    <h3>Asesoría Experta</h3>
-                    <p>Nuestro equipo está capacitado para ayudarte.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-tag"></i>
-                    <h3>Mejor Precio</h3>
-                    <p>Precios competitivos sin comprometer la calidad.</p>
-                </div>
-            </div>
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>PINTURAS MULTICOLOR "JR"</h3>
+          <p>Llevando color a tu vida desde 2015</p>
+          <p>Atendidos por: Familia Aboyte Diaz</p>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>PINTURAS MULTICOLOR "JR"</h3>
-                    <p>Llevando color a tu vida desde 2015</p>
-                    <p>Atendidos por: Familia Aboyte Diaz</p>
-                </div>
-                <div class="footer-col">
-                    <h3>Contacto</h3>
-                    <p><i class="fas fa-phone"></i> (+52) 66-23-27-29-78</p>
-                    <p><i class="fas fa-envelope"></i> pinturas@gmail.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Av. Perimetral Nte. 1285, Sahuaro, Hermosillo, Sonora</p>
-                </div>
-                <div class="footer-col">
-                    <h3>Enlaces</h3>
-                    <ul>
-                        <li><a href="#inicio">Inicio</a></li>
-                        <li><a href="#productos">Productos</a></li>
-                        <li><a href="#nosotros">Nosotros</a></li>
-                        <li><a href="#contacto">Contacto</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <a href="https://maps.app.goo.gl/k2hHw3gQxVJjFXHy5" target="_blank" class="map-button">
-                    <i class="fas fa-map-marker-alt"></i> Ver en Google Maps
-                </a>
-                <p>&copy; 2024 PINTURAS MULTICOLOR "JR". Todos los derechos reservados.</p>
-            </div>
+        <div class="footer-col">
+          <h3>Contacto</h3>
+          <p><i class="fas fa-phone"></i> (+52) 66-23-27-29-78</p>
+          <p><i class="fas fa-envelope"></i> pinturas@gmail.com</p>
+          <p><i class="fas fa-map-marker-alt"></i> Av. Perimetral Nte. 1285, Sahuaro, Hermosillo, Sonora</p>
         </div>
-    </footer>
+        <div class="footer-col">
+          <h3>Enlaces</h3>
+          <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <a href="https://maps.app.goo.gl/k2hHw3gQxVJjFXHy5" target="_blank" class="map-button">
+          <i class="fas fa-map-marker-alt"></i> Ver en Google Maps
+        </a>
+        <p>&copy; 2024 PINTURAS MULTICOLOR "JR". Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
 
+  <script src="main.js"></script>
 </body>
 </html>
-
