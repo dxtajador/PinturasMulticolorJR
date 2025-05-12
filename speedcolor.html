@@ -11,6 +11,586 @@
             box-sizing: border-box;
             font-family: 'Arial', sans-serif;
         }
+
+        body {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            width: 300px; /* Ajuste para que se vea bien en móvil */
+            height: auto;
+        }
+
+        .back-btn {
+            font-size: 16px;
+            color: #333;
+            text-decoration: none;
+            padding: 10px 15px;
+            border: 1px solid #333;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .back-btn:hover {
+            background-color: #ddd;
+        }
+
+        /* Product Header */
+        .product-header {
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Product Section */
+        .product-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .product-gallery {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+        }
+
+        .main-image {
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+
+        .main-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .thumbnails {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .thumbnail {
+            border: 1px solid #e0e0e0;
+            width: 80px;
+            height: 80px;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .product-info {
+            flex: 1;
+            min-width: 250px;
+            text-align: left;
+        }
+
+        .product-banner {
+            margin-bottom: 20px;
+        }
+
+        .product-banner img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .product-description {
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .product-description strong {
+            color: #333;
+        }
+
+        .categories {
+            margin-bottom: 20px;
+        }
+
+        .categories span {
+            color: #666;
+        }
+
+        .categories a {
+            color: #777;
+            text-decoration: none;
+        }
+
+        .categories a:hover {
+            text-decoration: underline;
+        }
+
+        /* Modal for image preview */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal img {
+            max-width: 80%;
+            height: auto;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Specs Table */
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background-color: #d4b054;
+        }
+
+        .specs-table th, .specs-table td {
+            border: none;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .specs-table th {
+            background-color: #d4b054;
+            color: white;
+        }
+
+        /* Colors Section */
+        .colors-section {
+            margin: 40px 0;
+        }
+
+        .colors-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .colors-title {
+            color: #9a1915;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .line-code {
+            font-weight: bold;
+        }
+
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .color-item {
+            text-align: center;
+        }
+
+        .color-swatches {
+            display: flex;
+            height: 40px;
+            margin-bottom: 8px;
+        }
+
+        .color-swatch {
+            flex: 1;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .color-name {
+            font-size: 12px;
+            color: #777;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .logo {
+                width: 80%;
+            }
+
+            .product-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .color-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+
+            .colors-title {
+                font-size: 18px;
+            }
+
+            .specs-table td, .specs-table th {
+                font-size: 12px;
+            }
+
+            .main-image img {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html" class="back-btn">Volver al inicio</a>
+            <img src="img/logo.jpg" alt="Logo de la tienda" class="logo">
+        </div>
+        
+        <div class="product-header">
+            <h1>SPEED KOLOR</h1>
+        </div>
+        
+        <div class="product-section">
+            <div class="product-gallery">
+                <div class="main-image" onclick="openModal('img/Speed-Kolor.webp')">
+                    <img src="img/Speed-Kolor.webp" alt="Speed Kolor - Esmalte De Poliuretano">
+                </div>
+            </div>
+            
+            <div class="product-info">
+                <div class="product-banner">
+                    <img src="img/infospeedkolor.webp" alt="Speed Kolor - Banner">
+                </div>
+                
+                <div class="product-description">
+                    <p>El esmalte de<strong>SPEED KOLOR,</strong>  es un esmalte de poliuretano, que ha sido desarrollado para ser usado en el recubrimiento de superficies donde se necesita una adherencia y una resistencia excepcionales.
+
+                        Speed-Kolor es usado por empresas que se dedican a la fabricación u operación de equipo y unidades, las cuales se encuentran en un ambiente de trabajo pesado.</p>
+                </div>
+                
+                <div class="categories">
+                    <span>Categorías: </span>
+                    <a href="#">Línea Automotriz</a>, <a href="#">Repintado Automotriz</a>
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="product-tabs">
+            <a>DESCRIPCIÓN</a>
+            
+            <div class="specs-table">
+                <table>
+                    <tr>
+                        <th>Catalización</th>
+                        <th>Catalizador</th>
+                        <th>% de Reducción</th>
+                        <th>Reductor Recomendado</th>
+                        <th>Número de Manos</th>
+                        <th>Oreo entre Mano y Mano</th>
+                    </tr>
+                    <tr>
+                        <td>4 a 1</td>
+                        <td>Catalizador para Esmalte de Poliuretano</td>
+                        <td>80 a 100%</td>
+                        <td>Solvente para Esmalte Poliuretano.</td>
+                        <td>2 a 3 Manos</td>
+                        <td>10 a 15 Minutos</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="colors-section">
+            <div class="colors-header">
+                <div class="colors-title">COLORES</div>
+                <div class="line-code">Línea ZPU90</div>
+            </div>
+            
+            <div class="color-grid">
+                <!-- Colores Marrón Violeta -->
+                <div class="color-item">
+                    <div class="color-swatches">
+                        <img src="img/imgSk/MarronRoyal.webp" alt="Marrón Royal" class="color-swatch" onclick="openModal('img/imgSk/MarronRoyal.webp')">
+                    </div>
+                    <div class="color-name">Marrón Royal</div>
+                </div>
+            <div class="color-item">
+                    <div class="color-swatches">
+                        <img src="img/imgSk/MarronVioleta.webp" alt="Magenta" class="color-swatch" onclick="openModal('img/imgSk/MarronVioleta.webp')">
+                    </div>
+                    <div class="color-name">Marron violeta</div>
+                </div>
+               <!-- Colores Marrón Violeta -->
+<div class="color-item">
+    <div class="color-swatches">
+        <img src="img/imgSK/Magenta.webp" alt="Magenta" class="color-swatch" onclick="openModal('img/imgSK/Magenta.webp')">
+    </div>
+    <div class="color-name">Magenta</div>
+</div>
+<div class="color-item">
+    <div class="color-swatches">
+        <img src="img/imgSK/RojoBrillanteOscuro.webp" alt="Rojo Brillante Oscuro" class="color-swatch" onclick="openModal('img/imgSK/RojoBrillanteOscuro.webp')">
+    </div>
+    <div class="color-name">Rojo Brillante Oscuro</div>
+</div>
+<div class="color-item">
+    <div class="color-swatches">
+        <img src="img/imgSK/RojoMezind.webp" alt="Rojo Mezind" class="color-swatch" onclick="openModal('img/imgSK/RojoMezind.webp')">
+    </div>
+    <div class="color-name">Rojo Mezind</div>
+</div>
+<div class="color-item">
+    <div class="color-swatches">
+        <img src="img/imgSK/RojoBermellon.webp" alt="Rojo Bermellón" class="color-swatch" onclick="openModal('img/imgSK/RojoBermellon.webp')">
+    </div>
+    <div class="color-name">Rojo Bermellón</div>
+</div>
+<div class="color-item">
+    <div class="color-swatches">
+        <img src="img/imgSK/RojoBermellonIntenso.webp" alt="Rojo Bermellón Intenso" class="color-swatch" onclick="openModal('img/imgSK/RojoBermellonIntenso.webp')">
+    </div>
+    <div class="color-name">Rojo Bermellón Intenso</div>
+</div>
+<div class="color-item">
+    <div class="color-swatches">
+        <img src="img/imgSK/RojoRadiante.webp" alt="Rojo Radiante" class="color-swatch" onclick="openModal('img/imgSK/RojoRadiante.webp')">
+    </div>
+    <div class="color-name">Rojo Radiante</div>
+</div>
+<div class="color-item">
+    <div class="color-swatches">
+        <img src="img/imgSK/RojoOxido.webp" alt="Rojo Óxido" class="color-swatch" onclick="openModal('img/imgSK/RojoOxido.webp')">
+    </div>
+    <div class="color-name">Rojo Óxido</div>
+</div>
+<div class="color-item">
+    <div class="color-swatches">
+        <img src="img/imgSK/CafeOrganicoTonoRojizo.webp" alt="Café Orgánico Tono Rojizo" class="color-swatch" onclick="openModal('img/imgSK/CafeOrganicoTonoRojizo.webp')">
+    </div>
+    <div class="color-name">Café Orgánico Tono Rojizo</div>
+</div>
+<div class="color-item">
+    <div class="color-swatches">
+        <img src="img/imgSK/RojoSolido.webp" alt="Rojo Sólido" class="color-swatch" onclick="openModal('img/imgSK/RojoSolido.webp')">
+    </div>
+    <div class="color-name">Rojo Sólido</div>
+</div>
+<div class="color-item">
+    <div class="color-swatches">
+        <img src="img/imgSK/RojoTransparente.webp" alt="Rojo Transparente" class="color-swatch" onclick="openModal('img/imgSK/RojoTransparente.webp')">
+    </div>
+    <div class="color-name">Rojo Transparente</div>
+</div>
+
+<!-- Colores Rojo Perrindo -->
+<div class="color-item">
+    <div class="color-swatches">
+        <img src="img/imgSK/Naranja.webp" alt="Naranja" class="color-swatch" onclick="openModal('img/imgSK/Naranja.webp')">
+    </div>
+    <div class="color-name">Naranja</div>
+</div>
+<div class="color-item">
+    <div class="color-swatches">
+        <img src="img/imgSK/NaranjaOrganico.webp" alt="Naranja Orgánico" class="color-swatch" onclick="openModal('img/imgSK/NaranjaOrganico.webp')">
+    </div>
+    <div class="color-name">Naranja Orgánico</div>
+</div>
+<div class="color-item">
+    <div class="color-swatches">
+        <img src="img/imgSK/AmarilloOxido.webp" alt="Amarillo Óxido" class="color-swatch" onclick="openModal('img/imgSK/AmarilloOxido.webp')">
+    </div>
+    <div class="color-name">Amarillo Óxido</div>
+</div>
+<div class="color-item">
+    <div class="color-swatches">
+        <img src="img/imgSK/CafeOrganicoTonoAmarillento.webp" alt="Café Orgánico Tono Amarillento" class="color-swatch" onclick="openModal('img/imgSK/CafeOrganicoTonoAmarillento.webp')">
+    </div>
+    <div class="color-name">Café Orgánico Tono Amarillento</div>
+</div>
+<div class="color-item">
+    <div class="color-swatches">
+        <img src="img/imgSK/AmarilloCromo.webp" alt="Amarillo Cromo" class="color-swatch" onclick="openModal('img/imgSK/AmarilloCromo.webp')">
+    </div>
+    <div class="color-name">Amarillo Cromo</div>
+</div>
+<div class="color-item">
+    <div class="color-swatches">
+        <img src="img/imgSK/AmarilloOrganico.webp" alt="Amarillo Orgánico" class="color-swatch" onclick="openModal('img/imgSK/AmarilloOrganico.webp')">
+    </div>
+    <div class="color-name">Amarillo Orgánico</div>
+</div>
+<div class="color-item">
+    <div class="color-swatches">
+        <img src="img/imgSK/AmarilloLimon.webp" alt="Amarillo Limón" class="color-swatch" onclick="openModal('img/imgSK/AmarilloLimon.webp')">
+    </div>
+    <div class="color-name">Amarillo Limón</div>
+</div>
+<div class="color-item">
+    <div class="color-swatches">
+        <img src="img/imgSK/VerdeOrganico.webp" alt="Verde Orgánico" class="color-swatch" onclick="openModal('img/imgSK/VerdeOrganico.webp')">
+    </div>
+    <div class="color-name">Verde Orgánico</div>
+</div>
+<div class="color-item">
+    <div class="color-swatches">
+        <img src="img/imgSK/AzulPrusia.webp" alt="Azul Prusia" class="color-swatch" onclick="openModal('img/imgSK/AzulPrusia.webp')">
+    </div>
+    <div class="color-name">Azul Prusia</div>
+</div>
+<div class="color-item">
+    <div class="color-swatches">
+        <img src="img/imgSK/AzulAstral.webp" alt="Azul Astral" class="color-swatch" onclick="openModal('img/imgSK/AzulAstral.webp')">
+    </div>
+    <div class="color-name">Azul Astral</div>
+</div>
+<div class="color-item">
+    <div class="color-swatches">
+        <img src="img/imgSK/AzulVioleta.webp" alt="Azul Violeta" class="color-swatch" onclick="openModal('img/imgSK/AzulVioleta.webp')">
+    </div>
+    <div class="color-name">Azul Violeta</div>
+</div>
+
+<!-- Colores Azul Orgánico -->
+<div class="color-item">
+    <div class="color-swatches">
+        <img src="img/imgSK/AluminioArmadora.webp" alt="Aluminio Armadora" class="color-swatch" onclick="openModal('img/imgSK/AluminioArmadora.webp')">
+    </div>
+    <div class="color-name">Aluminio Armadora</div>
+</div>
+<div class="color-item">
+    <div class="color-swatches">
+        <img src="img/imgSK/AluminioExtraGrueso.webp" alt="Aluminio Extra Grueso" class="color-swatch" onclick="openModal('img/imgSK/AluminioExtraGrueso.webp')">
+    </div>
+    <div class="color-name">Aluminio Extra Grueso</div>
+</div>
+<div class="color-item">
+    <div class="color-swatches">
+        <img src="img/imgSK/AluminioGrueso.webp" alt="Aluminio Grueso" class="color-swatch" onclick="openModal('img/imgSK/AluminioGrueso.webp')">
+    </div>
+    <div class="color-name">Aluminio Grueso</div>
+</div>
+<div class="color-item">
+    <div class="color-swatches">
+        <img src="img/imgSK/AluminioExtraGruesoBrillante.webp" alt="Aluminio Extra Grueso Brillante" class="color-swatch" onclick="openModal('img/imgSK/AluminioExtraGruesoBrillante.webp')">
+    </div>
+    <div class="color-name">Aluminio Extra Grueso Brillante</div>
+</div>
+<div class="color-item">
+    <div class="color-swatches">
+        <img src="img/imgSK/AluminioGruesoBrillante.webp" alt="Aluminio Grueso Brillante" class="color-swatch" onclick="openModal('img/imgSK/AluminioGruesoBrillante.webp')">
+    </div>
+    <div class="color-name">Aluminio Grueso Brillante</div>
+</div>
+<div class="color-item">
+    <div class="color-swatches">
+        <img src="img/imgSK/AluminioFinoBrillante.webp" alt="Aluminio Fino Brillante" class="color-swatch" onclick="openModal('img/imgSK/AluminioFinoBrillante.webp')">
+    </div>
+    <div class="color-name">Aluminio Fino Brillante</div>
+</div>
+<div class="color-item">
+    <div class="color-swatches">
+        <img src="img/imgSK/AluminioFino.webp" alt="Aluminio Fino" class="color-swatch" onclick="openModal('img/imgSK/AluminioFino.webp')">
+    </div>
+    <div class="color-name">Aluminio Fino</div>
+</div>
+<div class="color-item">
+    <div class="color-swatches">
+        <img src="img/imgSK/AluminioMediano.webp" alt="Aluminio Mediano" class="color-swatch" onclick="openModal('img/imgSK/AluminioMediano.webp')">
+    </div>
+    <div class="color-name">Aluminio Mediano</div>
+</div>
+<div class="color-item">
+    <div class="color-swatches">
+        <img src="img/imgSK/AluminioMedianoBrillante.webp" alt="Aluminio Mediano Brillante" class="color-swatch" onclick="openModal('img/imgSK/AluminioMedianoBrillante.webp')">
+    </div>
+    <div class="color-name">Aluminio Mediano Brillante</div>
+</div>
+            </div>
+
+            <!-- Nota sobre colores -->
+            <div class="color-note" style="margin-top: 20px; font-size: 12px; color: #666; text-align: center;">
+                NOTA: Estos colores son aproximados a los reales, pueden variar dependiendo de su pantalla (Los colores pueden ser igualados).
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal" id="imageModal" onclick="closeModal()">
+        <img id="modalImage" src="" alt="Imagen a gran escala">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+    </div>
+
+    <script>
+        // Función para abrir la imagen en tamaño grande
+        function openModal(imageSrc) {
+            document.getElementById('modalImage').src = imageSrc;
+            document.getElementById('imageModal').style.display = 'flex';
+        }
+
+        // Función para cerrar el modal
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speed Kolor - Zhaia Pinturas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
         
         body {
             color: #333;
