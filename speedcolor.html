@@ -11,18 +11,19 @@
             box-sizing: border-box;
             font-family: 'Arial', sans-serif;
         }
-        
+
         body {
             color: #333;
             line-height: 1.6;
+            background-color: #fefefe;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 15px;
         }
-        
+
         /* Header */
         .header {
             display: flex;
@@ -32,7 +33,7 @@
         }
 
         .logo {
-            width: 500px; /* Aumentar tamaño del logo */
+            width: 500px;
             height: auto;
         }
 
@@ -44,6 +45,7 @@
             border: 1px solid #333;
             background-color: #f4f4f4;
             border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
 
         .back-btn:hover {
@@ -54,13 +56,14 @@
         .product-header {
             padding: 30px 0;
         }
-        
-        h1 {
-            font-size: 32px;
-            color: #333;
+
+        .product-title {
+            font-size: 36px;
+            color: #9a1915;
+            font-weight: bold;
             margin-bottom: 20px;
         }
-        
+
         /* Product Section */
         .product-section {
             display: flex;
@@ -68,12 +71,12 @@
             gap: 30px;
             margin-bottom: 40px;
         }
-        
+
         .product-gallery {
             flex: 1;
             min-width: 300px;
         }
-        
+
         .main-image {
             border: 1px solid #e0e0e0;
             padding: 20px;
@@ -81,67 +84,48 @@
             margin-bottom: 15px;
             cursor: pointer;
         }
-        
+
         .main-image img {
             max-width: 100%;
             height: auto;
         }
-        
-        .thumbnails {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .thumbnail {
-            border: 1px solid #e0e0e0;
-            width: 80px;
-            height: 80px;
-            padding: 5px;
-            cursor: pointer;
-        }
-        
-        .thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        
+
         .product-info {
             flex: 1;
             min-width: 300px;
         }
-        
+
         .product-banner {
             margin-bottom: 20px;
         }
-        
+
         .product-banner img {
             max-width: 100%;
             height: auto;
         }
-        
+
         .product-description {
             margin-bottom: 20px;
             color: #666;
         }
-        
+
         .product-description strong {
             color: #333;
         }
-        
+
         .categories {
             margin-bottom: 20px;
         }
-        
+
         .categories span {
             color: #666;
         }
-        
+
         .categories a {
             color: #777;
             text-decoration: none;
         }
-        
+
         .categories a:hover {
             text-decoration: underline;
         }
@@ -157,11 +141,12 @@
             background-color: rgba(0, 0, 0, 0.7);
             justify-content: center;
             align-items: center;
+            z-index: 999;
         }
 
         .modal img {
-            max-width: 80%;
-            height: auto;
+            max-width: 90%;
+            max-height: 90%;
         }
 
         .modal-close {
@@ -172,7 +157,7 @@
             color: white;
             cursor: pointer;
         }
-        
+
         /* Specs Table */
         .specs-table {
             width: 100%;
@@ -180,73 +165,94 @@
             margin: 30px 0;
             background-color: #d4b054;
         }
-        
+
         .specs-table th, .specs-table td {
             border: none;
             padding: 15px;
             text-align: center;
             font-weight: bold;
         }
-        
+
         .specs-table th {
             background-color: #d4b054;
             color: white;
         }
-        
+
+        .specs-table tr:nth-child(2) {
+            background-color: #f9f3e2;
+        }
+
         /* Colors Section */
         .colors-section {
             margin: 40px 0;
         }
-        
+
         .colors-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
         }
-        
+
         .colors-title {
             color: #9a1915;
             font-size: 20px;
             font-weight: bold;
         }
-        
+
         .line-code {
             font-weight: bold;
         }
-        
+
         .color-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 20px;
         }
-        
+
         .color-item {
             text-align: center;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
         }
-        
+
+        .color-item:hover {
+            transform: scale(1.03);
+        }
+
         .color-swatches {
             display: flex;
             height: 40px;
             margin-bottom: 8px;
         }
-        
+
         .color-swatch {
             flex: 1;
             height: 100%;
             cursor: pointer;
         }
-        
+
         .color-name {
             font-size: 12px;
             color: #777;
         }
-        
+
+        .color-note {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+        }
+
         @media (max-width: 768px) {
             .product-section {
                 flex-direction: column;
             }
-            
+
             .color-grid {
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             }
@@ -259,40 +265,37 @@
             <a href="index.html" class="back-btn">Volver al inicio</a>
             <img src="img/logo.jpg" alt="Logo de la tienda" class="logo">
         </div>
-        
+
         <div class="product-header">
-            <h1>SPEED KOLOR</h1>
+            <h1 class="product-title">SPEED KOLOR</h1>
         </div>
-        
+
         <div class="product-section">
             <div class="product-gallery">
                 <div class="main-image" onclick="openModal('img/Speed-Kolor.webp')">
                     <img src="img/Speed-Kolor.webp" alt="Speed Kolor - Esmalte De Poliuretano">
                 </div>
             </div>
-            
+
             <div class="product-info">
                 <div class="product-banner">
                     <img src="img/infospeedkolor.webp" alt="Speed Kolor - Banner">
                 </div>
-                
-                <div class="product-description">
-                    <p>El esmalte de<strong>SPEED KOLOR,</strong>  es un esmalte de poliuretano, que ha sido desarrollado para ser usado en el recubrimiento de superficies donde se necesita una adherencia y una resistencia excepcionales.
 
-                        Speed-Kolor es usado por empresas que se dedican a la fabricación u operación de equipo y unidades, las cuales se encuentran en un ambiente de trabajo pesado.</p>
+                <div class="product-description">
+                    <p>El esmalte de <strong>SPEED KOLOR</strong> es un esmalte de poliuretano, que ha sido desarrollado para ser usado en el recubrimiento de superficies donde se necesita una adherencia y una resistencia excepcionales.</p>
+                    <p>Speed-Kolor es usado por empresas que se dedican a la fabricación u operación de equipo y unidades, las cuales se encuentran en un ambiente de trabajo pesado.</p>
                 </div>
-                
+
                 <div class="categories">
                     <span>Categorías: </span>
                     <a href="#">Línea Automotriz</a>, <a href="#">Repintado Automotriz</a>
                 </div>
-                
             </div>
         </div>
-        
+
         <div class="product-tabs">
             <a>DESCRIPCIÓN</a>
-            
             <div class="">
                 <table class="specs-table">
                     <tr>
@@ -301,35 +304,34 @@
                         <th>% de Reducción</th>
                         <th>Reductor Recomendado</th>
                         <th>Número de Manos</th>
-                        <th>Oreo entre Mano y Mano</th>
+                        <th>Tiempo entre Manos</th>
                     </tr>
                     <tr>
                         <td>4 a 1</td>
                         <td>Catalizador para Esmalte de Poliuretano</td>
                         <td>80 a 100%</td>
-                        <td>Solvente para Esmalte Poliuretano.</td>
+                        <td>Solvente para Esmalte Poliuretano</td>
                         <td>2 a 3 Manos</td>
                         <td>10 a 15 Minutos</td>
                     </tr>
                 </table>
             </div>
         </div>
-        
+
         <div class="colors-section">
             <div class="colors-header">
                 <div class="colors-title">COLORES</div>
                 <div class="line-code">Línea ZPU90</div>
             </div>
-            
+
             <div class="color-grid">
-                <!-- Colores Marrón Violeta -->
                 <div class="color-item">
                     <div class="color-swatches">
                         <img src="img/imgSk/MarronRoyal.webp" alt="Marrón Royal" class="color-swatch" onclick="openModal('img/imgSk/MarronRoyal.webp')">
                     </div>
                     <div class="color-name">Marrón Royal</div>
                 </div>
-                <div class="color-item">
+            <div class="color-item">
                     <div class="color-swatches">
                         <img src="img/imgSk/MarronVioleta.webp" alt="Magenta" class="color-swatch" onclick="openModal('img/imgSk/MarronVioleta.webp')">
                     </div>
@@ -522,14 +524,12 @@
 </div>
             </div>
 
-            <!-- Nota sobre colores -->
-            <div class="color-note" style="margin-top: 20px; font-size: 12px; color: #666; text-align: center;">
+            <div class="color-note">
                 NOTA: Estos colores son aproximados a los reales, pueden variar dependiendo de su pantalla (Los colores pueden ser igualados).
-
             </div>
         </div>
     </div>
-    
+
     <!-- Modal -->
     <div class="modal" id="imageModal" onclick="closeModal()">
         <img id="modalImage" src="" alt="Imagen a gran escala">
@@ -537,13 +537,11 @@
     </div>
 
     <script>
-        // Función para abrir la imagen en tamaño grande
         function openModal(imageSrc) {
             document.getElementById('modalImage').src = imageSrc;
             document.getElementById('imageModal').style.display = 'flex';
         }
-        
-        // Función para cerrar el modal
+
         function closeModal() {
             document.getElementById('imageModal').style.display = 'none';
         }
