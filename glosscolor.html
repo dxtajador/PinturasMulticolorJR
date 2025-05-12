@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gloss Kolor - Zhaia Pinturas</title>
     <style>
         * {
@@ -123,6 +123,12 @@
         .product-description {
             margin-bottom: 20px;
             color: #666;
+            background-color: #d4b054; /* Fondo dorado */
+            padding: 20px;
+            border-radius: 5px;
+            width: 100%; /* Asegura que el cuadro no se expanda más allá del contenedor */
+            box-sizing: border-box; /* Para que el padding no afecte el ancho total */
+            overflow: hidden; /* Evita desbordes */
         }
         
         .product-description strong {
@@ -249,10 +255,6 @@
             
             .color-grid {
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            }
-
-            .logo {
-                width: 300px; /* Ajuste del logo en pantallas más pequeñas */
             }
         }
     </style>
