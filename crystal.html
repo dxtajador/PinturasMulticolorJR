@@ -11,18 +11,18 @@
             box-sizing: border-box;
             font-family: 'Arial', sans-serif;
         }
-        
+
         body {
             color: #333;
             line-height: 1.6;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 15px;
         }
-        
+
         /* Header */
         .header {
             display: flex;
@@ -32,35 +32,57 @@
         }
 
         .logo {
-            width: 500px; /* Aumentar tamaño del logo */
+            width: 500px;
             height: auto;
         }
 
         .back-btn {
             font-size: 16px;
-            color: #333;
+            color: #fff;
             text-decoration: none;
             padding: 10px 15px;
-            border: 1px solid #333;
-            background-color: #f4f4f4;
+            background-color: #9a1915;
+            border: 1px solid #9a1915;
             border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
 
         .back-btn:hover {
-            background-color: #ddd;
+            background-color: #7a1510;
+        }
+
+        /* Botones de producto */
+        .product-header button {
+            padding: 10px 15px;
+            margin: 5px;
+            background-color: #9a1915;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .product-header button:hover {
+            background-color: #7a1510;
+        }
+
+        .product-header button:active {
+            background-color: #5c120d;
         }
 
         /* Product Header */
         .product-header {
             padding: 30px 0;
+            text-align: center;
         }
-        
+
         h1 {
             font-size: 32px;
             color: #333;
             margin-bottom: 20px;
         }
-        
+
         /* Product Section */
         .product-section {
             display: flex;
@@ -68,12 +90,13 @@
             gap: 30px;
             margin-bottom: 40px;
         }
-        
+
         .product-gallery {
             flex: 1;
             min-width: 300px;
+            text-align: center;
         }
-        
+
         .main-image {
             border: 1px solid #e0e0e0;
             padding: 20px;
@@ -81,18 +104,19 @@
             margin-bottom: 15px;
             cursor: pointer;
         }
-        
+
         .main-image img {
             max-width: 100%;
             height: auto;
         }
-        
+
         .thumbnails {
             display: flex;
             gap: 10px;
             margin-top: 15px;
+            justify-content: center;
         }
-        
+
         .thumbnail {
             border: 1px solid #e0e0e0;
             width: 80px;
@@ -101,53 +125,53 @@
             cursor: pointer;
             transition: border-color 0.3s ease;
         }
-        
+
         .thumbnail:hover {
             border-color: #333;
         }
-        
+
         .thumbnail img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        
+
         .product-info {
             flex: 1;
             min-width: 300px;
         }
-        
+
         .product-banner {
             margin-bottom: 20px;
         }
-        
+
         .product-banner img {
             max-width: 100%;
             height: auto;
         }
-        
+
         .product-description {
             margin-bottom: 20px;
             color: #666;
         }
-        
+
         .product-description strong {
             color: #333;
         }
-        
+
         .categories {
             margin-bottom: 20px;
         }
-        
+
         .categories span {
             color: #666;
         }
-        
+
         .categories a {
             color: #777;
             text-decoration: none;
         }
-        
+
         .categories a:hover {
             text-decoration: underline;
         }
@@ -178,7 +202,7 @@
             color: white;
             cursor: pointer;
         }
-        
+
         /* Specs Table */
         .specs-table {
             width: 100%;
@@ -186,75 +210,87 @@
             margin: 30px 0;
             background-color: #ff0000;
         }
-        
+
         .specs-table th, .specs-table td {
             border: none;
             padding: 15px;
             text-align: center;
             font-weight: bold;
         }
-        
+
         .specs-table th {
             background-color: #ff0000;
             color: white;
         }
-        
+
         /* Colors Section */
         .colors-section {
             margin: 40px 0;
         }
-        
+
         .colors-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
         }
-        
+
         .colors-title {
             color: #9a1915;
             font-size: 20px;
             font-weight: bold;
         }
-        
+
         .line-code {
             font-weight: bold;
         }
-        
+
         .color-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 20px;
         }
-        
+
         .color-item {
             text-align: center;
         }
-        
+
         .color-swatches {
             display: flex;
             height: 40px;
             margin-bottom: 8px;
         }
-        
+
         .color-swatch {
             flex: 1;
             height: 100%;
             cursor: pointer;
         }
-        
+
         .color-name {
             font-size: 12px;
             color: #777;
         }
-        
+
+        /* Responsividad */
         @media (max-width: 768px) {
             .product-section {
                 flex-direction: column;
             }
-            
+
             .color-grid {
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+
+            .product-header button {
+                font-size: 14px;
+                padding: 8px 12px;
+                width: 100%;
+            }
+
+            .back-btn {
+                font-size: 14px;
+                padding: 8px 12px;
             }
         }
     </style>
@@ -279,12 +315,10 @@
         
         <div class="product-section">
             <div class="product-gallery">
-                <!-- Imagen principal -->
                 <div class="main-image" onclick="openModal('img/CrystalGloss.webp')">
                     <img id="mainImage" src="img/CrystalGloss.webp" alt="Crystal Gloss">
                 </div>
 
-                <!-- Miniaturas -->
                 <div class="thumbnails" id="thumbnails">
                     <div class="thumbnail" onclick="changeImage('img/CrystalGloss.webp')">
                         <img src="img/CrystalGloss.webp" alt="Imagen 1">
@@ -298,7 +332,7 @@
                 </div>
                 
                 <div class="product-description">
-                    <p id="productDescription"><strong>Zhaia Pinturas</strong> desarrollo el <strong>Crystal-Gloss</strong> que es una <strong>Clara de Poliuretano</strong> de altos sólidos de dos componentes para sistemas bicapa que proporciona excelentes propiedades protectoras ya que cuenta con una mezcla de inhibidores y absorbedores de rayos ultravioleta de la más alta calidad, evitando con esto el amarillamiento prematuro de los acabados asÌ como los cambios de color por la exposición al sol.</p>
+                    <p id="productDescription"><strong>Zhaia Pinturas</strong> desarrollo el <strong>Crystal-Gloss</strong> que es una <strong>Clara de Poliuretano</strong>...</p>
                 </div>
                 
                 <div class="categories">
@@ -310,7 +344,6 @@
         
         <div class="product-tabs">
             <a>DESCRIPCIÓN</a>
-            
             <div class="">
                 <table class="specs-table" id="specsTable">
                     <tr>
@@ -341,12 +374,12 @@
     </div>
 
     <script>
-        // Datos de los productos
+        // Datos de los productos y funciones de cambio de producto
         const products = {
             CrystalGloss: {
                 images: ['img/CrystalGloss.webp'],
                 banner: 'img/infoCG.webp',
-                description: '<strong>Zhaia Pinturas</strong> desarrollo el <strong>Crystal-Gloss</strong> que es una <strong>Clara de Poliuretano</strong> de altos sólidos de dos componentes para sistemas bicapa que proporciona excelentes propiedades protectoras ya que cuenta con una mezcla de inhibidores y absorbedores de rayos ultravioleta de la más alta calidad, evitando con esto el amarillamiento prematuro de los acabados asÌ como los cambios de color por la exposición al sol.',
+                description: '<strong>Zhaia Pinturas</strong> desarrollo el <strong>Crystal-Gloss</strong> que es una <strong>Clara de Poliuretano</strong>...</p>',
                 specs: {
                     catalizacion: '4 a 1',
                     catalizador: 'Catalizador para Crystal Gloss',
@@ -355,87 +388,19 @@
                     manos: '2 a 3 Manos',
                     oreo: '10 a 15 Minutos'
                 }
-            },
-            CrystalHigh: {
-                images: ['img/Crystahigh.webp'],
-                banner: 'img/infoCH.webp',
-                description: '<strong>Zhaia Pinturas</strong> desarrollo <strong>Crystal-High </strong>,que es una Clara de Poliuretano de altos sólidos de dos componentes para sistemas bicapa que proporciona excelentes propiedades protectoras ya que cuenta con una mezcla de inhibidores y absorbedores de rayos ultravioleta de la más alta calidad, evitando con esto el amarillamiento prematuro de los acabados así como los cambios de color por la exposición al sol.',
-                specs: {
-                    catalizacion: '4 a 1',
-                    catalizador: 'Catalizador para Crystal High',
-                    reduccion: 'Hasta un 100%',
-                    reductor: 'Solvente para Crystal High',
-                    manos: '2 a 3 Manos',
-                    oreo: '10 a 15 Minutos'
-                }
-            },
-            CrystalLight: {
-                images: ['img/CrystalLight.webp'],
-                banner: 'img/infoCL.webp',
-                description: '<strong>Crystal-Light</strong>es una Clara de Poliuretano de secado rápido de dos componentes para sistemas bicapa que proporciona excelentes propiedades protectoras ya que cuenta con una mezcla de inhibidores y absorbedores de rayos ultravioleta de la más alta calidad, evitando con esto el amarillamiento prematuro de los acabados así como los cambios de color por la exposición al sol.',
-                specs: {
-                    catalizacion: '4 a 1',
-                    catalizador: 'Catalizador para Crystal Light',
-                    reduccion: 'Hasta un 25%',
-                    reductor: 'Solvente para Crystal Light',
-                    manos: '2 a 3 Manos',
-                    oreo: '10 a 15 Minutos'
-                }
-            },
-            CrystalFast: { 
-                images: ['img/CrystalFast.webp'],
-                banner: 'img/infoCF.webp',
-                description: '<strong>Zhaia Pinturas</strong> desarrollo <strong>Crystal-Fast</strong>, que es una Clara de Poliuretano de alto brillo de dos componentes para sistemas bicapa listo para aplicarse que proporciona excelentes propiedades protectoras ya que cuenta con una mezcla de inhibidores y absorbedores de rayos ultravioleta de la más alta calidad, evitando con esto el amarillamiento prematuro de los acabados así como los cambios de color por la exposición al sol.',
-                specs: {
-                    catalizacion: '6 a 1',
-                    catalizador: 'Catalizador para Crystal Fast',
-                    reduccion: 'No requiere Máximo 10%',
-                    reductor: 'Solvente para Crystal Fast',
-                    manos: '2 a 3 Manos',
-                    oreo: '10 a 15 Minutos'
-                }
-            },
-            CrystalDynamic: {
-                images: ['img/CrystalDynamic.webp'],
-                banner: 'img/infoCD.webp',
-                description: '<strong>Zhaia Pinturas</strong> desarrollo <strong>Crystal-Dynamic</strong>,que es una Clara de Poliuretano de altos sólidos de dos componentes para sistemas bicapa de alta productividad que proporciona excelentes propiedades protectoras ya que cuenta con una mezcla de inhibidores y absorbedores de rayos ultravioleta de la más alta calidad, evitando con esto el amarillamiento prematuro de los acabados así como los cambios de color por la exposición al sol. Crystal-Dynamic está diseñada para usarse sobre la capa de base color Gloss Kolor. Por su secado rápido de 1 hora se recomienda usarse en reparaciones de 1 a 3 paneles. Crystal-Dynamic ofrece propiedades tales como: rápido secado, tiempo para pulir más corto, alto brillo, transparencia, profundidad, durabilidad y retención de color, además de ofrecer una excelente adherencia entre el acabado transparente y la capa de color.',
-                specs: {
-                    catalizacion: '4 a 1',
-                    catalizador: 'Catalizador para Crystal Dynamic',
-                    reduccion: 'Hasta un 25%',
-                    reductor: 'Solvente para Crystal Dynamic',
-                    manos: '2 a 3 Manos',
-                    oreo: '10 a 15 Minutos'
-                }
             }
         };
 
-        // Función para cambiar el producto
         function changeProduct(productKey) {
             const product = products[productKey];
             if (product) {
-                // Cambiar la imagen principal
                 document.getElementById('mainImage').src = product.images[0];
-                // Cambiar las miniaturas
-                const thumbnailsContainer = document.getElementById('thumbnails');
-                thumbnailsContainer.innerHTML = ''; // Limpiar miniaturas anteriores
-                product.images.forEach((imageSrc, index) => {
-                    const thumbnail = document.createElement('div');
-                    thumbnail.className = 'thumbnail';
-                    thumbnail.onclick = () => changeImage(imageSrc);
-                    thumbnail.innerHTML = `<img src="${imageSrc}" alt="Imagen ${index + 1}">`;
-                    thumbnailsContainer.appendChild(thumbnail);
-                });
-                // Cambiar el banner
                 document.getElementById('productBanner').src = product.banner;
-                // Cambiar la descripción
                 document.getElementById('productDescription').innerHTML = product.description;
-                // Cambiar la tabla de especificaciones
                 updateSpecsTable(product.specs);
             }
         }
 
-        // Función para actualizar la tabla de especificaciones
         function updateSpecsTable(specs) {
             const specsTable = document.getElementById('specsTable');
             specsTable.innerHTML = `
@@ -458,18 +423,12 @@
             `;
         }
 
-        // Función para cambiar la imagen principal
-        function changeImage(imageSrc) {
-            document.getElementById('mainImage').src = imageSrc;
-        }
-
         // Función para abrir la imagen en tamaño grande
         function openModal(imageSrc) {
             document.getElementById('modalImage').src = imageSrc;
             document.getElementById('imageModal').style.display = 'flex';
         }
         
-        // Función para cerrar el modal
         function closeModal() {
             document.getElementById('imageModal').style.display = 'none';
         }
