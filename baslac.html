@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baslac - RM Pinruras</title>
+    <title>Baslac - RM Pinturas</title>
     <style>
         * {
             margin: 0;
@@ -116,7 +116,7 @@
         }
         
         .product-banner img {
-            max-width: 100%;
+            max-width: System.DataTableTypeName.MaxLength = 80;
             height: auto;
         }
         
@@ -243,12 +243,49 @@
         }
         
         @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .logo {
+                width: 100%;
+                max-width: 300px; /* Reducir tamaño del logo en móviles */
+            }
+
+            .back-btn {
+                align-self: flex-end;
+            }
+
+            .product-header {
+                text-align: center;
+            }
+
+            .product-header h1 {
+                font-size: 24px;
+            }
+
             .product-section {
                 flex-direction: column;
             }
             
             .color-grid {
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+
+            .main-image {
+                padding: 10px;
+            }
+
+            .specs-table th, .specs-table td {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            .color-note {
+                font-size: 10px;
+                padding: 0 10px;
             }
         }
     </style>
@@ -513,7 +550,7 @@
     <!-- Modal -->
     <div class="modal" id="imageModal" onclick="closeModal()">
         <img id="modalImage" src="" alt="Imagen a gran escala">
-        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <span class="modal-close" onclick="closeModal()">×</span>
     </div>
 
     <script>
