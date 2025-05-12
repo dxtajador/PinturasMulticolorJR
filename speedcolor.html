@@ -3,8 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <title>Speed Kolor - Zhaia Pinturas</title>
-    <link rel="stylesheet" href="estilos.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .volver {
+            font-size: 16px;
+            color: #333;
+            text-decoration: none;
+            padding: 10px 15px;
+            border: 1px solid #333;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+        }
+
+        .volver:hover {
+            background-color: #ddd;
+        }
+
+        .logo {
+            width: 500px;
+            height: auto;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .titulo {
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .producto {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .imagen-principal {
+            flex: 1;
+            min-width: 300px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .imagen-principal img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .info-producto {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .banner-producto {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .descripcion {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .descripcion strong {
+            color: #333;
+        }
+
+        .categorias {
+            color: #666;
+        }
+
+        .categorias a {
+            color: #777;
+            text-decoration: none;
+        }
+
+        .categorias a:hover {
+            text-decoration: underline;
+        }
+
+        .tabla-descripcion {
+            margin-top: 40px;
+        }
+
+        .tabla-descripcion table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #d4b054;
+        }
+
+        .tabla-descripcion th,
+        .tabla-descripcion td {
+            border: none;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .tabla-descripcion th {
+            color: white;
+        }
+
+        .colores {
+            margin-top: 40px;
+        }
+
+        .encabezado-colores {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .encabezado-colores h2 {
+            font-size: 20px;
+            color: #9a1915;
+            font-weight: bold;
+        }
+
+        .linea {
+            font-weight: bold;
+        }
+
+        .grid-colores {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .color {
+            text-align: center;
+        }
+
+        .color img {
+            width: 100%;
+            height: auto;
+            max-height: 150px;
+            object-fit: contain;
+            cursor: pointer;
+            border: 1px solid #ccc;
+        }
+
+        .color p {
+            font-size: 12px;
+            color: #777;
+            margin-top: 5px;
+        }
+
+        .nota-colores {
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .modal-contenido {
+            max-width: 80%;
+            height: auto;
+        }
+
+        .cerrar {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .producto {
+                flex-direction: column;
+            }
+
+            .grid-colores {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+
+            .logo {
+                width: 300px;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
