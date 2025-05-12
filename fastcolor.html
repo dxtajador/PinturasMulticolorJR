@@ -11,19 +11,18 @@
             box-sizing: border-box;
             font-family: 'Arial', sans-serif;
         }
-        
+
         body {
             color: #333;
             line-height: 1.6;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 15px;
         }
-        
-        /* Header */
+
         .header {
             display: flex;
             align-items: center;
@@ -32,7 +31,7 @@
         }
 
         .logo {
-            width: 500px; /* Aumentar tamaño del logo */
+            width: 500px;
             height: auto;
         }
 
@@ -50,30 +49,28 @@
             background-color: #ddd;
         }
 
-        /* Product Header */
         .product-header {
             padding: 30px 0;
         }
-        
+
         h1 {
             font-size: 32px;
             color: #333;
             margin-bottom: 20px;
         }
-        
-        /* Product Section */
+
         .product-section {
             display: flex;
             flex-wrap: wrap;
             gap: 30px;
             margin-bottom: 40px;
         }
-        
+
         .product-gallery {
             flex: 1;
             min-width: 300px;
         }
-        
+
         .main-image {
             border: 1px solid #e0e0e0;
             padding: 20px;
@@ -81,72 +78,52 @@
             margin-bottom: 15px;
             cursor: pointer;
         }
-        
+
         .main-image img {
             max-width: 100%;
             height: auto;
         }
-        
-        .thumbnails {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .thumbnail {
-            border: 1px solid #e0e0e0;
-            width: 80px;
-            height: 80px;
-            padding: 5px;
-            cursor: pointer;
-        }
-        
-        .thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        
+
         .product-info {
             flex: 1;
             min-width: 300px;
         }
-        
+
         .product-banner {
             margin-bottom: 20px;
         }
-        
+
         .product-banner img {
             max-width: 100%;
             height: auto;
         }
-        
+
         .product-description {
             margin-bottom: 20px;
             color: #666;
         }
-        
+
         .product-description strong {
             color: #333;
         }
-        
+
         .categories {
             margin-bottom: 20px;
         }
-        
+
         .categories span {
             color: #666;
         }
-        
+
         .categories a {
             color: #777;
             text-decoration: none;
         }
-        
+
         .categories a:hover {
             text-decoration: underline;
         }
 
-        /* Modal for image preview */
         .modal {
             display: none;
             position: fixed;
@@ -172,81 +149,80 @@
             color: white;
             cursor: pointer;
         }
-        
-        /* Specs Table */
+
         .specs-table {
             width: 100%;
             border-collapse: collapse;
             margin: 30px 0;
             background-color: #d4b054;
         }
-        
-        .specs-table th, .specs-table td {
+
+        .specs-table th,
+        .specs-table td {
             border: none;
             padding: 15px;
             text-align: center;
             font-weight: bold;
         }
-        
+
         .specs-table th {
             background-color: #d4b054;
             color: white;
         }
-        
-        /* Colors Section */
+
         .colors-section {
             margin: 40px 0;
         }
-        
+
         .colors-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
         }
-        
+
         .colors-title {
             color: #9a1915;
             font-size: 20px;
             font-weight: bold;
         }
-        
+
         .line-code {
             font-weight: bold;
         }
-        
+
         .color-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 20px;
         }
-        
+
         .color-item {
             text-align: center;
         }
-        
+
         .color-swatches {
             display: flex;
             height: 40px;
             margin-bottom: 8px;
         }
-        
+
         .color-swatch {
             flex: 1;
             height: 100%;
             cursor: pointer;
         }
-        
+
         .color-name {
             font-size: 12px;
             color: #777;
         }
-        
+
         @media (max-width: 768px) {
             .product-section {
                 flex-direction: column;
             }
-            
+
             .color-grid {
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             }
@@ -259,42 +235,38 @@
             <a href="index.html" class="back-btn">Volver al inicio</a>
             <img src="img/logo.jpg" alt="Logo de la tienda" class="logo">
         </div>
-        
+
         <div class="product-header">
             <h1>Fast Kolor</h1>
         </div>
-        
+
         <div class="product-section">
             <div class="product-gallery">
                 <div class="main-image" onclick="openModal('img/fastkolor.webp')">
                     <img src="img/fastkolor.webp" alt="Fast Kolor - Esmalte Acrílico">
                 </div>
             </div>
-            
+
             <div class="product-info">
                 <div class="product-banner">
                     <img src="img/infofastkolor.webp" alt="Fast Kolor - Banner">
                 </div>
-                
+
                 <div class="product-description">
                     <p>El Esmalte de Secado Rápido <strong>FAST KOLOR</strong> es un material cuyas propiedades hacen de este un esmalte ideal para usarse en el repintado de vehículos automotores como: camiones, automóviles, vehículos usados en a agricultura, tractores, motocicletas, etc. También se recomienda para usos donde se requiera decorar y dar protección a instrumentos industriales.</p>
                 </div>
-                
+
                 <div class="categories">
                     <span>Categorías: </span>
                     <a href="#">Línea Automotriz</a>, <a href="#">Repintado Automotriz</a>
                 </div>
-                
             </div>
         </div>
-        
+
         <div class="product-tabs">
-            <a>DESCRIPCIÓN</a>
-            
             <div class="">
                 <table class="specs-table">
                     <tr>
-                        <th>Catalización</th>
                         <th>Catalizador</th>
                         <th>% de Reducción</th>
                         <th>Reductor Recomendado</th>
@@ -302,7 +274,6 @@
                         <th>Oreo entre Mano y Mano</th>
                     </tr>
                     <tr>
-                        <td>8 a 1</td>
                         <td>Catalizador Universal</td>
                         <td>50 a 75%</td>
                         <td>Solvente para Esmalte Acrílico</td>
@@ -312,22 +283,22 @@
                 </table>
             </div>
         </div>
-        
+
         <div class="colors-section">
             <div class="colors-header">
                 <div class="colors-title">COLORES</div>
                 <div class="line-code">Línea Z540</div>
             </div>
-            
+
             <div class="color-grid">
-                <!-- Colores Rojos y Marrones -->
                 <div class="color-item">
                     <div class="color-swatches">
                         <img src="img/imgFK/FKMarronRoyal.webp" alt="Marrón Royal" class="color-swatch" onclick="openModal('img/imgFK/FKMarronRoyal.webp')">
                     </div>
                     <div class="color-name">Marrón Royal</div>
                 </div>
-                <div class="color-item">
+            </div>
+            <div class="color-item">
                     <div class="color-swatches">
                         <img src="img/imgFK/Magenta.webp" alt="Magenta" class="color-swatch" onclick="openModal('img/imgFK/Magenta.webp')">
                     </div>
@@ -502,14 +473,13 @@
                     <div class="color-name">Aluminio Mediano</div>
                 </div>
                 </div>
-                <!-- Nota sobre colores -->
+
             <div class="color-note" style="margin-top: 20px; font-size: 12px; color: #666; text-align: center;">
                 NOTA: Estos colores son aproximados a los reales, pueden variar dependiendo de su pantalla (Los colores pueden ser igualados).
             </div>
-            </div>
         </div>
     </div>
-    
+
     <!-- Modal -->
     <div class="modal" id="imageModal" onclick="closeModal()">
         <img id="modalImage" src="" alt="Imagen a gran escala">
@@ -517,17 +487,14 @@
     </div>
 
     <script>
-        // Función para abrir la imagen en tamaño grande
         function openModal(imageSrc) {
             document.getElementById('modalImage').src = imageSrc;
             document.getElementById('imageModal').style.display = 'flex';
         }
-        
-        // Función para cerrar el modal
+
         function closeModal() {
             document.getElementById('imageModal').style.display = 'none';
         }
     </script>
-    
 </body>
 </html>
