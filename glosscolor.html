@@ -123,12 +123,6 @@
         .product-description {
             margin-bottom: 20px;
             color: #666;
-            background-color: #d4b054; /* Fondo dorado */
-            padding: 20px;
-            border-radius: 5px;
-            width: 100%;
-            box-sizing: border-box;
-            overflow: hidden;
         }
         
         .product-description strong {
@@ -184,19 +178,18 @@
             width: 100%;
             border-collapse: collapse;
             margin: 30px 0;
-            background-color: #d4b054;
         }
         
         .specs-table th, .specs-table td {
-            border: none;
+            border: 1px solid #e0e0e0;
             padding: 15px;
             text-align: center;
             font-weight: bold;
         }
         
         .specs-table th {
-            background-color: #d4b054;
-            color: white;
+            background-color: #f4f4f4;
+            color: #333;
         }
         
         /* Colors Section */
@@ -248,23 +241,13 @@
             color: #777;
         }
         
-        /* Ajustes para el cuadro que muestra especificaciones */
-        .specs-table {
-            margin-top: 20px;
-        }
-        
         @media (max-width: 768px) {
             .product-section {
                 flex-direction: column;
             }
             
-            .specs-table td {
-                font-size: 12px;
-                padding: 10px;
-            }
-            
-            .specs-table th {
-                font-size: 14px;
+            .color-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             }
         }
     </style>
@@ -307,7 +290,7 @@
         <div class="product-tabs">
             <a>DESCRIPCIÓN</a>
             
-            <div class="">
+            <div class="specs-table-container">
                 <table class="specs-table">
                     <tr>
                         <th>Catalización</th>
@@ -572,6 +555,11 @@
             </div>
 
                 
+            </div>
+            
+            <!-- Nota sobre colores -->
+            <div class="color-note" style="margin-top: 20px; font-size: 12px; color: #666; text-align: center;">
+                NOTA: Estos colores son aproximados a los reales, pueden variar dependiendo de su pantalla (Los colores pueden ser igualados).
             </div>
         </div>
     </div>
