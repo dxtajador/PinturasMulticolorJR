@@ -4,23 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pinturas Multicolor JR</title>
+
+    <!-- Ícono del sitio (favicon) -->
+    <link rel="icon" href="img/icon.jpg" type="image/jpeg">
+
+    <!-- META para compartir en redes y buscadores -->
+    <meta property="og:title" content="Pinturas Multicolor JR">
+    <meta property="og:description" content="La excelencia en cada color. Pinturas automotrices, industriales y más.">
+    <meta property="og:image" content="https://pinturasmulticolorjr.com/img/icon.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pinturasmulticolorjr.com">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pinturas Multicolor JR">
+    <meta name="twitter:description" content="Calidad garantizada en pinturas y recubrimientos.">
+    <meta name="twitter:image" content="https://pinturasmulticolorjr.com/img/icon.jpg">
+
+    <!-- CSS externo y Font Awesome -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body, html {
-            margin: 0;
-            padding: 0;
-        }
-
-        video, img {
-            max-width: 100%;
-            height: auto;
-        }
+        * { box-sizing: border-box; }
+        body, html { margin: 0; padding: 0; }
+        video, img { max-width: 100%; height: auto; }
 
         .button-grid {
             display: grid;
@@ -37,8 +44,7 @@
 
         #hero-video {
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 0; left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -46,10 +52,8 @@
 
         .hero-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
         }
 
@@ -72,20 +76,13 @@
             padding: 10px;
         }
 
-        /* NUEVO: Mostrar imágenes solo en móviles */
         .mobile-banner-images {
             display: none;
         }
 
         @media screen and (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 1.8rem;
-            }
-
-            .hero-content p {
-                font-size: 1rem;
-            }
-
+            .hero-content h1 { font-size: 1.8rem; }
+            .hero-content p { font-size: 1rem; }
             .navigation-buttons .container h2 {
                 font-size: 1.3rem;
                 text-align: center;
@@ -119,7 +116,6 @@
                 text-align: center;
             }
 
-            /* NUEVO: Mostrar imágenes Zhaia y Baslac en extremos */
             .mobile-banner-images {
                 display: flex;
                 justify-content: space-between;
@@ -148,7 +144,7 @@
         </div>
     </div>
 
-    <!-- NUEVO: Imágenes en extremos (solo móvil) -->
+    <!-- Imágenes Zhaia y Baslac solo en móvil -->
     <div class="mobile-banner-images">
         <img src="https://www.zhaiapinturas.mx/wp-content/uploads/2016/11/Logo.png" alt="Zhaia">
         <img src="img/baslac.png" alt="Baslac">
@@ -165,7 +161,7 @@
                 </a>
                 <a href="fastcolor.html" class="nav-button exteriores-btn">
                     <i class="fas fa-car-side"></i>
-                    <span>Esmalte Acrilico</span>
+                    <span>Esmalte Acrílico</span>
                 </a>
                 <a href="speedcolor.html" class="nav-button esmaltes-btn">
                     <i class="fas fa-truck-pickup"></i>
@@ -193,7 +189,7 @@
                 </a>
                 <a href="vinilica.html" class="nav-button vinilica-btn special">
                     <i class="fas fa-paint-roller"></i>
-                    <span>Vinilica</span>
+                    <span>Vinílica</span>
                 </a>
                 <a href="productos.html" class="nav-button accesorios-btn special">
                     <i class="fas fa-fill-drip"></i>
@@ -238,7 +234,7 @@
                 <div class="footer-col">
                     <h3>PINTURAS MULTICOLOR "JR"</h3>
                     <p>Llevando color a tu vida desde 2015</p>
-                    <p>Atendidos por: Familia Aboyte Diaz</p>
+                    <p>Atendidos por: Familia Aboyte Díaz</p>
                 </div>
                 <div class="footer-col">
                     <h3>Contacto</h3>
