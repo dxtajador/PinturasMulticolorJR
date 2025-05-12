@@ -126,9 +126,9 @@
             background-color: #d4b054; /* Fondo dorado */
             padding: 20px;
             border-radius: 5px;
-            width: 100%; /* Asegura que el cuadro no se expanda más allá del contenedor */
-            box-sizing: border-box; /* Para que el padding no afecte el ancho total */
-            overflow: hidden; /* Evita desbordes */
+            width: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
         }
         
         .product-description strong {
@@ -248,13 +248,23 @@
             color: #777;
         }
         
+        /* Ajustes para el cuadro que muestra especificaciones */
+        .specs-table {
+            margin-top: 20px;
+        }
+        
         @media (max-width: 768px) {
             .product-section {
                 flex-direction: column;
             }
             
-            .color-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            .specs-table td {
+                font-size: 12px;
+                padding: 10px;
+            }
+            
+            .specs-table th {
+                font-size: 14px;
             }
         }
     </style>
@@ -562,9 +572,6 @@
             </div>
 
                 
-            <!-- Nota sobre colores -->
-            <div class="color-note" style="margin-top: 20px; font-size: 12px; color: #666; text-align: center;">
-                NOTA: Estos colores son aproximados a los reales, pueden variar dependiendo de su pantalla (Los colores pueden ser igualados).
             </div>
         </div>
     </div>
