@@ -11,7 +11,7 @@
             box-sizing: border-box;
             font-family: 'Arial', sans-serif;
         }
-        
+
         body {
             color: #333;
             line-height: 1.6;
@@ -242,16 +242,6 @@
             color: #777;
         }
         
-        @media (max-width: 768px) {
-            .product-section {
-                flex-direction: column;
-            }
-            
-            .color-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            }
-        }
-
         /* Nuevos estilos para los botones de pintura */
         .paint-buttons {
             display: flex;
@@ -285,6 +275,181 @@
         .paint-content.active {
             display: block;
         }
+
+        /* Media Queries for Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .product-section {
+                flex-direction: column;
+            }
+            
+            .color-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+
+            /* Header */
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 15px 0;
+            }
+
+            .logo {
+                width: 100%;
+                max-width: 300px;
+                margin-bottom: 10px;
+            }
+
+            .back-btn {
+                font-size: 14px;
+                padding: 8px 12px;
+            }
+
+            /* Product Header */
+            .product-header {
+                padding: 20px 0;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            /* Product Section */
+            .product-gallery, .product-info {
+                min-width: 100%;
+            }
+
+            .main-image {
+                padding: 10px;
+            }
+
+            .product-description {
+                font-size: 14px;
+            }
+
+            .paint-buttons {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .paint-btn {
+                padding: 8px 16px;
+                font-size: 13px;
+                min-width: 100px; /* Ensure buttons are touch-friendly */
+            }
+
+            /* Specs Table */
+            .specs-table th, .specs-table td {
+                padding: 10px;
+                font-size: 12px;
+            }
+
+            /* Colors Section */
+            .colors-title {
+                font-size: 18px;
+            }
+
+            .color-swatches {
+                height: 30px;
+            }
+
+            .color-name {
+                font-size: 11px;
+            }
+
+            .color-note {
+                font-size: 11px;
+            }
+
+            /* Modal */
+            .modal img {
+                max-width: 90%;
+            }
+
+            .modal-close {
+                font-size: 24px;
+                top: 15px;
+                right: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 10px;
+            }
+
+            /* Header */
+            .logo {
+                max-width: 200px;
+            }
+
+            .back-btn {
+                font-size: 12px;
+                padding: 6px 10px;
+            }
+
+            /* Product Header */
+            h1 {
+                font-size: 20px;
+            }
+
+            /* Product Section */
+            .product-section {
+                gap: 20px;
+            }
+
+            .main-image {
+                padding: 8px;
+            }
+
+            .product-description {
+                font-size: 13px;
+            }
+
+            .paint-btn {
+                font-size: 12px;
+                padding: 6px 12px;
+                min-width: 80px;
+            }
+
+            /* Specs Table */
+            .specs-table th, .specs-table td {
+                padding: 8px;
+                font-size: 11px;
+            }
+
+            /* Colors Section */
+            .color-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 15px;
+            }
+
+            .colors-title {
+                font-size: 16px;
+            }
+
+            .color-swatches {
+                height: 25px;
+            }
+
+            .color-name {
+                font-size: 10px;
+            }
+
+            .color-note {
+                font-size: 10px;
+            }
+
+            /* Modal */
+            .modal img {
+                max-width: 95%;
+            }
+
+            .modal-close {
+                font-size: 20px;
+                top: 10px;
+                right: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -293,7 +458,7 @@
             <a href="index.html" class="back-btn">Volver al inicio</a>
             <img src="img/logo.jpg" alt="Logo de la tienda" class="logo">
         </div>
-        
+
         <div class="product-header">
             <h1>Vinilica</h1>
         </div>
@@ -302,7 +467,9 @@
             <div class="product-gallery">
                 <!-- Botones para cambiar entre tipos de pintura -->
                 <div class="paint-buttons">
-                    <button class="paint-btn active" onclick="showPaint('nattural')">Nattural</button>
+                    <button class="paint-btn active" onclick="showPaint '
+
+(nattural')">Nattural</button>
                     <button class="paint-btn" onclick="showPaint('alegria')">Alegria</button>
                     <button class="paint-btn" onclick="showPaint('ovo')">Ovo</button>
                 </div>
@@ -310,7 +477,7 @@
                 <!-- Contenido de Nattural -->
                 <div id="nattural" class="paint-content active">
                     <div class="main-image" onclick="openModal('img/nattural.webp')">
-                        <img src="img/nattural.webp" alt="Nattural - Pintura Vinílica">
+                        <amate src="img/nattural.webp" alt="Nattural - Pintura Vinílica">
                     </div>
                     <div class="product-description">
                         <p>Zhaia Pinturas ha desarrollado <strong>NATTURAL</strong> que es una pintura de tipo Vinil Acrílica reducible en agua, de acabado mate, durable y buen desempeño, se puede usar en interiores y exteriores para usos decorativos de casas, oficinas, talleres, etc. Y cualquier superficie con acabados de yeso, concreto, repellado, aplanado, mampostería, ladrillo, tabique y plafón.
@@ -376,7 +543,7 @@
                     <tr>
                         <td>No requiere</td>
                         <td>No requiere</td>
-                        <td>No requiere</td>
+                        <td>No requiere-balanced
                         <td>No requiere</td>
                         <td>-</td>
                         <td>-</td>
@@ -401,13 +568,12 @@
                 NOTA: Estos colores son aproximados a los reales, pueden variar dependiendo de su pantalla (Los colores pueden ser igualados).
             </div>
         </div>
-
     </div>
-    
+
     <!-- Modal -->
     <div class="modal" id="imageModal" onclick="closeModal()">
         <img id="modalImage" src="" alt="Imagen a gran escala">
-        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <span class="modal-close" onclick="closeModal()">×</span>
     </div>
 
     <script>
@@ -425,99 +591,98 @@
         // Datos de colores para cada pintura
         const colorsData = {
             nattural: [
-    { name: "Rosa Palido", image: "img/imgN/RosaPalido.webp" },
-    { name: "Amarillo Limon", image: "img/imgN/AmarilloLimon.webp" },
-    { name: "Verde Pistache", image: "img/imgN/VerdePistache.webp" },
-    { name: "Gris", image: "img/imgN/Gris.webp" },
-    { name: "Melon", image: "img/imgN/Melon.webp" },
-    { name: "Vainilla", image: "img/imgN/Vainilla.webp" },
-    { name: "Verde Claro", image: "img/imgN/VerdeClaro.webp" },
-    { name: "Azul Cielo", image: "img/imgN/AzulCielo.webp" },
-    { name: "Amarillo Napolitano", image: "img/imgN/AmarilloNapolitano.webp" },
-    { name: "Marfil", image: "img/imgN/Marfil.webp" },
-    { name: "Verde Turquesa", image: "img/imgN/VerdeTurquesa.webp" },
-    { name: "Azul Agua", image: "img/imgN/AzulAgua.webp" },
-    { name: "Amarillo Elegante", image: "img/imgN/AmarilloElegante.webp" },
-    { name: "Verde Hoja", image: "img/imgN/VerdeHoja.webp" },
-    { name: "Azul Medio", image: "img/imgN/AzulMedio.webp" },
-    { name: "Rojo", image: "img/imgN/Rojo.webp" },
-    { name: "Mango", image: "img/imgN/Mango.webp" },
-    { name: "Verdelimon", image: "img/imgN/Verdelimon.webp" },
-    { name: "Azul Mediterraneo", image: "img/imgN/AzulMediterraneo.webp" },
-    { name: "Blanco Ostion", image: "img/imgN/BlancoOstion.webp" },
-    { name: "Orquidea", image: "img/imgN/Orquidea.webp" },
-    { name: "Crema", image: "img/imgN/Crema.webp" },
-    { name: "Lila", image: "img/imgN/Lila.webp" }
-],
-alegria: [
-    { name: "Blanco Ostion", image: "img/imgA/BlancoOstion.webp" },
-    { name: "Amarillo Paja", image: "img/imgA/AmarilloPaja.webp" },
-    { name: "Verde Manzana", image: "img/imgA/VerdeManzana.webp" },
-    { name: "Beige", image: "img/imgA/Beige.webp" },
-    { name: "Amarillo Limon", image: "img/imgA/AmarilloLimon.webp" },
-    { name: "Menta", image: "img/imgA/Menta.webp" },
-    { name: "Chabacano", image: "img/imgA/Chabacano.webp" },
-    { name: "Marfil", image: "img/imgA/Marfil.webp" },
-    { name: "Verde Aguamarina", image: "img/imgA/VerdeAguamarina.webp" },
-    { name: "Amarillo Napolitano", image: "img/imgA/AmarilloNapolitano.webp" },
-    { name: "Amarillo Oxido", image: "img/imgA/AmarilloOxido.webp" },
-    { name: "Verde Limon", image: "img/imgA/VerdeLimon.webp" },
-    { name: "Naranja", image: "img/imgA/Naranja.webp" },
-    { name: "Verde Turquesa", image: "img/imgA/VerdeTurquesa.webp" },
-    { name: "Verde Bosque", image: "img/imgA/VerdeBosque.webp" },
-    { name: "Azul Cielo", image: "img/imgA/AzulCielo.webp" },
-    { name: "Tangerina", image: "img/imgA/Tangerina.webp" },
-    { name: "Gris Perla", image: "img/imgA/GrisPerla.webp" },
-    { name: "Azul Agua", image: "img/imgA/AzulAgua.webp" },
-    { name: "Rojo Ladrillo", image: "img/imgA/RojoLadrillo.webp" },
-    { name: "Orquidea", image: "img/imgA/Orquidea.webp" },
-    { name: "Azul Ultramar", image: "img/imgA/AzulUltramar.webp" },
-    { name: "Rojo Oxido", image: "img/imgA/RojoOxido.webp" },
-    { name: "Lila", image: "img/imgA/Lila.webp" },
-    { name: "Azul Colonial", image: "img/imgA/AzulColonial.webp" },
-    { name: "Cafe Obscuro", image: "img/imgA/CafeObscuro.webp" },
-    { name: "Azul Basico", image: "img/imgA/AzulBasico.webp" },
-    { name: "Verde Basico", image: "img/imgA/VerdeBasico.webp" },
-    { name: "Violeta Basico", image: "img/imgA/VioletaBasico.webp" },
-    { name: "Amarillo Basico", image: "img/imgA/AmarilloBasico.webp" },
-    { name: "Rojo Basico", image: "img/imgA/RojoBasico.webp" },
-    { name: "Magenta", image: "img/imgA/Magenta.webp" }
-],
-
-ovo: [
-    { name: "Cocoa", image: "img/imgO/Cocoa.webp" },
-    { name: "Rojo-Texas", image: "img/imgO/Rojo-Texas.webp" },
-    { name: "Rojo Intenso", image: "img/imgO/RojoIntenso.webp" },
-    { name: "Naranja-Intenso", image: "img/imgO/Naranja-Intenso.webp" },
-    { name: "Tangerina", image: "img/imgO/Tangerina.webp" },
-    { name: "Rojo Hacienda", image: "img/imgO/Rojo_Hacienda.webp" },
-    { name: "Magenta", image: "img/imgO/Magenta.webp" },
-    { name: "Rosa Mexicano", image: "img/imgO/RosaMexicano.webp" },
-    { name: "Salmon", image: "img/imgO/Csalmon.webp" },
-    { name: "Amarillo-Napolitano", image: "img/imgO/Amarillo-Napolitano.webp" },
-    { name: "Amarillo Limon", image: "img/imgO/AmarilloLimon.webp" },
-    { name: "Crema", image: "img/imgO/Crema.webp" },
-    { name: "Marfil", image: "img/imgO/Marfil.webp" },
-    { name: "Champagne", image: "img/imgO/Champagne.webp" },
-    { name: "Blanco Hueso", image: "img/imgO/BlancoHueso.webp" },
-    { name: "Verde Bosque", image: "img/imgO/Verde_Bosque.webp" },
-    { name: "Turquesa", image: "img/imgO/Turquesa.webp" },
-    { name: "Manzana", image: "img/imgO/Manzana.webp" },
-    { name: "Azul Intenso", image: "img/imgO/Azul_Intenso.webp" },
-    { name: "Azul Ultramar", image: "img/imgO/AzulUltramar.webp" },
-    { name: "Azul-Agua", image: "img/imgO/Azul-Agua.webp" },
-    { name: "Morado", image: "img/imgO/Morado.webp" },
-    { name: "Azul Colonial", image: "img/imgO/AzulColonial.webp" },
-    { name: "Lila-Intenso", image: "img/imgO/Lila-Intenso.webp" },
-    { name: "Gris", image: "img/imgO/Gris.webp" },
-    { name: "Rojo Oxido", image: "img/imgO/RojoOxido.webp" },
-    { name: "Rojo", image: "img/imgO/Rojo.webp" },
-    { name: "Amarillo Oxido", image: "img/imgO/AmarilloOxido.webp" },
-    { name: "Amarillo", image: "img/imgO/Amarillo.webp" },
-    { name: "Verde", image: "img/imgO/Verde.webp" },
-    { name: "Azul", image: "img/imgO/Azul.webp" },
-    { name: "Violeta", image: "img/imgO/Violeta.webp" }
-]
+                { name: "Rosa Palido", image: "img/imgN/RosaPalido.webp" },
+                { name: "Amarillo Limon", image: "img/imgN/AmarilloLimon.webp" },
+                { name: "Verde Pistache", image: "img/imgN/VerdePistache.webp" },
+                { name: "Gris", image: "img/imgN/Gris.webp" },
+                { name: "Melon", image: "img/imgN/Melon.webp" },
+                { name: "Vainilla", image: "img/imgN/Vainilla.webp" },
+                { name: "Verde Claro", image: "img/imgN/VerdeClaro.webp" },
+                { name: "Azul Cielo", image: "img/imgN/AzulCielo.webp" },
+                { name: "Amarillo Napolitano", image: "img/imgN/AmarilloNapolitano.webp" },
+                { name: "Marfil", image: "img/imgN/Marfil.webp" },
+                { name: "Verde Turquesa", image: "img/imgN/VerdeTurquesa.webp" },
+                { name: "Azul Agua", image: "img/imgN/AzulAgua.webp" },
+                { name: "Amarillo Elegante", image: "img/imgN/AmarilloElegante.webp" },
+                { name: "Verde Hoja", image: "img/imgN/VerdeHoja.webp" },
+                { name: "Azul Medio", image: "img/imgN/AzulMedio.webp" },
+                { name: "Rojo", image: "img/imgN/Rojo.webp" },
+                { name: "Mango", image: "img/imgN/Mango.webp" },
+                { name: "Verdelimon", image: "img/imgN/Verdelimon.webp" },
+                { name: "Azul Mediterraneo", image: "img/imgN/AzulMediterraneo.webp" },
+                { name: "Blanco Ostion", image: "img/imgN/BlancoOstion.webp" },
+                { name: "Orquidea", image: "img/imgN/Orquidea.webp" },
+                { name: "Crema", image: "img/imgN/Crema.webp" },
+                { name: "Lila", image: "img/imgN/Lila.webp" }
+            ],
+            alegria: [
+                { name: "Blanco Ostion", image: "img/imgA/BlancoOstion.webp" },
+                { name: "Amarillo Paja", image: "img/imgA/AmarilloPaja.webp" },
+                { name: "Verde Manzana", image: "img/imgA/VerdeManzana.webp" },
+                { name: "Beige", image: "img/imgA/Beige.webp" },
+                { name: "Amarillo Limon", image: "img/imgA/AmarilloLimon.webp" },
+                { name: "Menta", image: "img/imgA/Menta.webp" },
+                { name: "Chabacano", image: "img/imgA/Chabacano.webp" },
+                { name: "Marfil", image: "img/imgA/Marfil.webp" },
+                { name: "Verde Aguamarina", image: "img/imgA/VerdeAguamarina.webp" },
+                { name: "Amarillo Napolitano", image: "img/imgA/AmarilloNapolitano.webp" },
+                { name: "Amarillo Oxido", image: "img/imgA/AmarilloOxido.webp" },
+                { name: "Verde Limon", image: "img/imgA/VerdeLimon.webp" },
+                { name: "Naranja", image: "img/imgA/Naranja.webp" },
+                { name: "Verde Turquesa", image: "img/imgA/VerdeTurquesa.webp" },
+                { name: "Verde Bosque", image: "img/imgA/VerdeBosque.webp" },
+                { name: "Azul Cielo", image: "img/imgA/AzulCielo.webp" },
+                { name: "Tangerina", image: "img/imgA/Tangerina.webp" },
+                { name: "Gris Perla", image: "img/imgA/GrisPerla.webp" },
+                { name: "Azul Agua", image: "img/imgA/AzulAgua.webp" },
+                { name: "Rojo Ladrillo", image: "img/imgA/RojoLadrillo.webp" },
+                { name: "Orquidea", image: "img/imgA/Orquidea.webp" },
+                { name: "Azul Ultramar", image: "img/imgA/AzulUltramar.webp" },
+                { name: "Rojo Oxido", image: "img/imgA/RojoOxido.webp" },
+                { name: "Lila", image: "img/imgA/Lila.webp" },
+                { name: "Azul Colonial", image: "img/imgA/AzulColonial.webp" },
+                { name: "Cafe Obscuro", image: "img/imgA/CafeObscuro.webp" },
+                { name: "Azul Basico", image: "img/imgA/AzulBasico.webp" },
+                { name: "Verde Basico", image: "img/imgA/VerdeBasico.webp" },
+                { name: "Violeta Basico", image: "img/imgA/VioletaBasico.webp" },
+                { name: "Amarillo Basico", image: "img/imgA/AmarilloBasico.webp" },
+                { name: "Rojo Basico", image: "img/imgA/RojoBasico.webp" },
+                { name: "Magenta", image: "img/imgA/Magenta.webp" }
+            ],
+            ovo: [
+                { name: "Cocoa", image: "img/imgO/Cocoa.webp" },
+                { name: "Rojo-Texas", image: "img/imgO/Rojo-Texas.webp" },
+                { name: "Rojo Intenso", image: "img/imgO/RojoIntenso.webp" },
+                { name: "Naranja-Intenso", image: "img/imgO/Naranja-Intenso.webp" },
+                { name: "Tangerina", image: "img/imgO/Tangerina.webp" },
+                { name: "Rojo Hacienda", image: "img/imgO/Rojo_Hacienda.webp" },
+                { name: "Magenta", image: "img/imgO/Magenta.webp" },
+                { name: "Rosa Mexicano", image: "img/imgO/RosaMexicano.webp" },
+                { name: "Salmon", image: "img/imgO/Csalmon.webp" },
+                { name: "Amarillo-Napolitano", image: "img/imgO/Amarillo-Napolitano.webp" },
+                { name: "Amarillo Limon", image: "img/imgO/AmarilloLimon.webp" },
+                { name: "Crema", image: "img/imgO/Crema.webp" },
+                { name: "Marfil", image: "img/imgO/Marfil.webp" },
+                { name: "Champagne", image: "img/imgO/Champagne.webp" },
+                { name: "Blanco Hueso", image: "img/imgO/BlancoHueso.webp" },
+                { name: "Verde Bosque", image: "img/imgO/Verde_Bosque.webp" },
+                { name: "Turquesa", image: "img/imgO/Turquesa.webp" },
+                { name: "Manzana", image: "img/imgO/Manzana.webp" },
+                { name: "Azul Intenso", image: "img/imgO/Azul_Intenso.webp" },
+                { name: "Azul Ultramar", image: "img/imgO/AzulUltramar.webp" },
+                { name: "Azul-Agua", image: "img/imgO/Azul-Agua.webp" },
+                { name: "Morado", image: "img/imgO/Morado.webp" },
+                { name: "Azul Colonial", image: "img/imgO/AzulColonial.webp" },
+                { name: "Lila-Intenso", image: "img/imgO/Lila-Intenso.webp" },
+                { name: "Gris", image: "img/imgO/Gris.webp" },
+                { name: "Rojo Oxido", image: "img/imgO/RojoOxido.webp" },
+                { name: "Rojo", image: "img/imgO/Rojo.webp" },
+                { name: "Amarillo Oxido", image: "img/imgO/AmarilloOxido.webp" },
+                { name: "Amarillo", image: "img/imgO/Amarillo.webp" },
+                { name: "Verde", image: "img/imgO/Verde.webp" },
+                { name: "Azul", image: "img/imgO/Azul.webp" },
+                { name: "Violeta", image: "img/imgO/Violeta.webp" }
+            ]
         };
 
         // Función para mostrar los colores según la pintura seleccionada
